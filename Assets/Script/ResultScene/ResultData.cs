@@ -2,20 +2,22 @@
 {
     public float timePlayed;
     public int wavesCompleted;
-    public int sessionExperience;
+    public int sessionNormalEssence;
+    public int sessionOtherWorldEssence;
 
     private static ResultData instance;
 
-    public static void SetData(float timePlayed, int wavesCompleted, int experience)
+    public static void SetData(float timePlayed, int wavesCompleted, int normalEssence, int otherWorldEssence)
     {
         instance = new ResultData
         {
             timePlayed = timePlayed,
             wavesCompleted = wavesCompleted,
-            sessionExperience = experience
+            sessionNormalEssence = normalEssence,
+            sessionOtherWorldEssence = otherWorldEssence
         };
-        AnalyticsManager.Instance.RecordPlayTime(timePlayed);
 
+        AnalyticsManager.Instance.RecordPlayTime(timePlayed);
     }
 
     public static ResultData GetData()
@@ -23,3 +25,4 @@
         return instance ?? new ResultData();
     }
 }
+

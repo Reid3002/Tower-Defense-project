@@ -5,16 +5,22 @@ public class PlayerExperienceManager : MonoBehaviour
 {
     public static PlayerExperienceManager Instance { get; private set; }
 
-    private int totalExperience = 0;   // Experiencia acumulada total
-    private int sessionExperience = 0;
+    // ESENCIA TOTAL acumulada (persistente)
+    private int totalNormalEssence = 0;
+    private int totalOtherWorldEssence = 0;
+
+    // ESENCIA por sesión (solo la run actual)
+    private int sessionNormalEssence = 0;
+    private int sessionOtherWorldEssence = 0;
+
     private float timePlayed = 0f;
 
-    [Header("Valores de experiencia")]
-    [SerializeField] private int xpPorSegundo = 1;
-    [SerializeField] private int xpPorBoss = 100;
-    [SerializeField] private int xpPorMiniBoss = 50;
-    [SerializeField] private int xpPorCambioMundo = 10;
-    [SerializeField] private int xpPorOleadaSinDaño = 50;
+    [Header("Essence Values")]
+    [SerializeField] private int essencePerSecond = 1;
+    [SerializeField] private int essencePerBoss = 100;
+    [SerializeField] private int essencePerMiniBoss = 50;
+    [SerializeField] private int essencePerNoDamageWave = 50;
+    [SerializeField] private int essencePerEnemyKill = 2;
 
     private bool coreDamagedThisWave = false;
 
@@ -23,16 +29,17 @@ public class PlayerExperienceManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Se mantiene entre escenas
-            totalExperience = PlayerPrefs.GetInt("TotalExperience", 0); // Cargar acumulado de PlayerPrefs
+            DontDestroyOnLoad(gameObject);
 
+            // Cargar de PlayerPrefs
+            totalNormalEssence = PlayerPrefs.GetInt("TotalNormalEssence", 0);
+            totalOtherWorldEssence = PlayerPrefs.GetInt("TotalOtherWorldEssence", 0);
         }
         else
         {
-            Destroy(gameObject); // Si vuelve a escena 1 y ya existe, elimina el duplicado
+            Destroy(gameObject);
         }
     }
-
 
     private void OnEnable()
     {
@@ -43,6 +50,7 @@ public class PlayerExperienceManager : MonoBehaviour
         }
         WorldManager.OnWorldChanged += OnWorldChanged;
         Core.OnCoreDamaged += OnCoreDamaged;
+        EnemyTracker.OnEnemyKilled += OnEnemyKilled;
     }
 
     private void OnDisable()
@@ -54,22 +62,22 @@ public class PlayerExperienceManager : MonoBehaviour
         }
         WorldManager.OnWorldChanged -= OnWorldChanged;
         Core.OnCoreDamaged -= OnCoreDamaged;
+        EnemyTracker.OnEnemyKilled -= OnEnemyKilled;
     }
 
     private void Update()
     {
-        // Solo suma experiencia por tiempo si hay una oleada activa
+        // Sumar esencia solo si hay oleada activa
         if (WaveManager.Instance != null && WaveManager.Instance.WaveInProgress)
         {
             timePlayed += Time.deltaTime;
             if (timePlayed >= 1f)
             {
-                AddExperience(xpPorSegundo);
+                AddEssencePerWorld(essencePerSecond, WorldManager.Instance.CurrentWorld);
                 timePlayed -= 1f;
             }
         }
     }
-
 
     private void OnWaveStarted(int wave, int totalEnemies)
     {
@@ -78,22 +86,15 @@ public class PlayerExperienceManager : MonoBehaviour
 
     private void OnWaveEnded()
     {
+        // Sumar esencia solo si el core NO recibió daño
         if (!coreDamagedThisWave)
-            AddExperience(xpPorOleadaSinDaño);
+            AddEssencePerWorld(essencePerNoDamageWave, WorldManager.Instance.CurrentWorld);
     }
 
-    public void OnBossKilled()
+    private void OnWorldChanged(WorldState newWorld)
     {
-        AddExperience(xpPorBoss);
-    }
-    public void OnMiniBossKilled()
-    {
-        AddExperience(xpPorMiniBoss);
-    }
-
-    public void OnWorldChanged(WorldState newWorld)
-    {
-        AddExperience(xpPorCambioMundo);
+        // Acá podrías sumar esencia extra si querés, al cambiar de mundo.
+        // Ejemplo: AddEssencePerWorld(10, newWorld);
     }
 
     private void OnCoreDamaged()
@@ -101,75 +102,130 @@ public class PlayerExperienceManager : MonoBehaviour
         coreDamagedThisWave = true;
     }
 
-    private void AddExperience(int amount)
+    // NUEVO: Cada vez que se mata un enemigo, sumar esencia según el mundo del enemigo
+    private void OnEnemyKilled(EnemyType enemyType, WorldState originWorld)
     {
-        sessionExperience += amount;
-        WaveUIController.Instance?.UpdateExperienceUI();
-        // Evento/feedback visual si querés.
+        // Podés distinguir boss/miniBoss, etc.
+        int amount = essencePerEnemyKill;
+        if (enemyType == EnemyType.Boss)
+            amount = essencePerBoss;
+        else if (enemyType == EnemyType.MiniBoss)
+            amount = essencePerMiniBoss;
+
+        AddEssencePerWorld(amount, originWorld);
     }
-    public void AddExperienceToTotal()
+
+    /// <summary>
+    /// Suma esencia a la barra correspondiente según el mundo.
+    /// </summary>
+    public void AddEssencePerWorld(int amount, WorldState world)
     {
-        totalExperience += sessionExperience;
-        PlayerPrefs.SetInt("TotalExperience", totalExperience); // Guardá en disco
-        sessionExperience = 0; // Reiniciá SOLO la experiencia de la sesión
-    }
-    public void RemoveTotalExperience(int amount)
-    {
-        totalExperience = Mathf.Max(0, totalExperience - amount);
-        PlayerPrefs.SetInt("TotalExperience", totalExperience);
-        PlayerPrefs.Save();
+        if (world == WorldState.Normal)
+            sessionNormalEssence += amount;
+        else
+            sessionOtherWorldEssence += amount;
+
         WaveUIController.Instance?.UpdateExperienceUI();
     }
 
-    public void ResetExperience()
+    /// <summary>
+    /// Llamar esto al terminar la partida para volcar la sesión al total (persistente).
+    /// </summary>
+    public void AddEssenceSessionToTotal()
     {
-        sessionExperience = 0;
-        WaveUIController.Instance?.UpdateExperienceUI();
+        totalNormalEssence += sessionNormalEssence;
+        totalOtherWorldEssence += sessionOtherWorldEssence;
+        PlayerPrefs.SetInt("TotalNormalEssence", totalNormalEssence);
+        PlayerPrefs.SetInt("TotalOtherWorldEssence", totalOtherWorldEssence);
+        sessionNormalEssence = 0;
+        sessionOtherWorldEssence = 0;
     }
-    public int GetTotalExperience()
+
+    public int GetTotalEssence(WorldState world) =>
+        (world == WorldState.Normal) ? totalNormalEssence : totalOtherWorldEssence;
+
+    public int GetSessionEssence(WorldState world) =>
+        (world == WorldState.Normal) ? sessionNormalEssence : sessionOtherWorldEssence;
+
+    public void RemoveEssence(WorldState world, int amount)
     {
-        return totalExperience;
+        if (world == WorldState.Normal)
+            totalNormalEssence = Mathf.Max(0, totalNormalEssence - amount);
+        else
+            totalOtherWorldEssence = Mathf.Max(0, totalOtherWorldEssence - amount);
+
+        PlayerPrefs.SetInt("TotalNormalEssence", totalNormalEssence);
+        PlayerPrefs.SetInt("TotalOtherWorldEssence", totalOtherWorldEssence);
+        PlayerPrefs.Save();
     }
-    public int GetExperienceThisSession()
+    public bool RemoveEssenceBoth(int amount)
     {
-        return sessionExperience;
+        int half = Mathf.CeilToInt(amount / 2f);
+        // Solo permite gastar si hay suficiente de ambas
+        if (totalNormalEssence >= half && totalOtherWorldEssence >= half)
+        {
+            totalNormalEssence -= half;
+            totalOtherWorldEssence -= half;
+
+            PlayerPrefs.SetInt("TotalNormalEssence", totalNormalEssence);
+            PlayerPrefs.SetInt("TotalOtherWorldEssence", totalOtherWorldEssence);
+            PlayerPrefs.Save();
+            return true;
+        }
+        return false;
     }
 
 #if UNITY_EDITOR
-    [Header("Test XP")]
-    public int testXPAmount = 500;
+    [Header("Test Essence")]
+    public int testNormalEssenceAmount = 500;
+    public int testOtherWorldEssenceAmount = 500;
 
-    [ContextMenu("Sumar XP de test")]
-    public void AddXPFromInspector()
+    private int lastTestNormalEssenceAmount = 0;
+    private int lastTestOtherWorldEssenceAmount = 0;
+
+    [ContextMenu("Sumar Normal Essence (Inspector)")]
+    public void AddNormalEssenceFromInspector()
     {
-        AddExperience(testXPAmount);
-        Debug.Log($"TEST: +{testXPAmount} XP (Inspector)");
+        AddEssencePerWorld(testNormalEssenceAmount, WorldState.Normal);
+        Debug.Log($"TEST: +{testNormalEssenceAmount} Normal Essence (Inspector)");
     }
-    private int lastTestXPAmount = 0;
+
+    [ContextMenu("Sumar OtherWorld Essence (Inspector)")]
+    public void AddOtherWorldEssenceFromInspector()
+    {
+        AddEssencePerWorld(testOtherWorldEssenceAmount, WorldState.OtherWorld);
+        Debug.Log($"TEST: +{testOtherWorldEssenceAmount} OtherWorld Essence (Inspector)");
+    }
 
     private void OnValidate()
     {
-        // Detecta cambio en el inspector y suma XP automáticamente (solo para test)
-        if (testXPAmount != lastTestXPAmount)
+        if (testNormalEssenceAmount != lastTestNormalEssenceAmount)
         {
-            int diff = testXPAmount - lastTestXPAmount;
-            AddExperience(diff);
-            lastTestXPAmount = testXPAmount;
-            Debug.Log($"[TEST] Sumar XP desde Inspector: {diff} (XP total: {sessionExperience})");
+            int diff = testNormalEssenceAmount - lastTestNormalEssenceAmount;
+            AddEssencePerWorld(diff, WorldState.Normal);
+            lastTestNormalEssenceAmount = testNormalEssenceAmount;
+            Debug.Log($"[TEST] Sumar Normal Essence desde Inspector: {diff} (Session: {GetSessionEssence(WorldState.Normal)})");
+        }
+        if (testOtherWorldEssenceAmount != lastTestOtherWorldEssenceAmount)
+        {
+            int diff = testOtherWorldEssenceAmount - lastTestOtherWorldEssenceAmount;
+            AddEssencePerWorld(diff, WorldState.OtherWorld);
+            lastTestOtherWorldEssenceAmount = testOtherWorldEssenceAmount;
+            Debug.Log($"[TEST] Sumar OtherWorld Essence desde Inspector: {diff} (Session: {GetSessionEssence(WorldState.OtherWorld)})");
         }
     }
 
-    [ContextMenu("Reset Total Experience")]
-    public void ResetTotalExperience()
+    [ContextMenu("Reset Total Essence")]
+    public void ResetTotalEssence()
     {
-        totalExperience = 0;
-        PlayerPrefs.DeleteKey("TotalExperience");
+        totalNormalEssence = 0;
+        totalOtherWorldEssence = 0;
+        PlayerPrefs.DeleteKey("TotalNormalEssence");
+        PlayerPrefs.DeleteKey("TotalOtherWorldEssence");
         PlayerPrefs.Save();
-        Debug.Log("Total de experiencia reseteado.");
+        Debug.Log("Total Essence (ambas) reseteada.");
         WaveUIController.Instance?.UpdateExperienceUI();
     }
-
-
 #endif
 
 }

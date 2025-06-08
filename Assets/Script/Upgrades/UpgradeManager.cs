@@ -75,8 +75,12 @@ public class UpgradeManager : MonoBehaviour
     public void ResetUpgrades()
     {
         unlockedUpgrades.Clear();
-        PlayerPrefs.DeleteKey(PlayerPrefsKey);
-        Debug.Log("Upgrades reseteadas");
+        Debug.Log("[UpgradeManager] Todas las mejoras han sido reseteadas.");
+        // Si querés también actualizar la UI automáticamente:
+        UpgradesPanelUI panel = FindFirstObjectByType<UpgradesPanelUI>();
+        if (panel != null)
+            panel.RefreshUI();
     }
 #endif
+
 }

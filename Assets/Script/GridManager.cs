@@ -17,13 +17,6 @@ public class GridManager : MonoBehaviour
     public GameObject pathPrefab;
     public GameObject corePrefab;
 
-    [Header("Preview Prefabs")]
-    public GameObject cellPreviewPrefab;
-    public GameObject pathPreviewPrefab;
-
-    public GameObject gridDropZonePrefab;
-    private GameObject currentGridDropZone;
-
     public GameObject tilePreviewPrefab;
     private GameObject currentPreview;
     private List<Vector3> orderedPathPositions = new List<Vector3>();

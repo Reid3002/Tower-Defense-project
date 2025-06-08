@@ -8,6 +8,8 @@ public static class EnemyTracker
 
     public static IReadOnlyList<Enemy> Enemies => enemies;
 
+    public static event System.Action<EnemyType, WorldState> OnEnemyKilled;
+
     public static void RegisterEnemy(Enemy enemy)
     {
         if (!enemies.Contains(enemy))
@@ -56,5 +58,11 @@ public static class EnemyTracker
             .ToList();
     }
 
-
+    public static void NotifyEnemyKilledGlobal(Enemy enemy)
+    {
+        if (enemy != null && enemy.WorldLogic != null)
+        {
+            OnEnemyKilled?.Invoke(enemy.Type, enemy.WorldLogic.GetOriginWorld());
+        }
+    }
 }

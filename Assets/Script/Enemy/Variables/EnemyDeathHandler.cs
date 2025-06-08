@@ -8,19 +8,12 @@ public class EnemyDeathHandler : MonoBehaviour, IEnemyDeathHandler
             WaveManager.Instance.NotifyEnemyKilled();
 
         if (EnemyPool.Instance != null)
-            EnemyPool.Instance.ReturnEnemy(enemy.Type, enemy.gameObject); // Usá enum
+            EnemyPool.Instance.ReturnEnemy(enemy.Type, enemy.gameObject);
 
-        // Nueva lógica: sumar experiencia si es Boss o MiniBoss
-        if (enemy.Type == EnemyType.Boss)
-        {
-            PlayerExperienceManager.Instance.OnBossKilled();
-        }
-        else if (enemy.Type == EnemyType.MiniBoss)
-        {
-            PlayerExperienceManager.Instance.OnMiniBossKilled();
-        }
+        // Sumar essence según tipo y mundo del enemigo
+        EnemyTracker.NotifyEnemyKilledGlobal(enemy);
 
         enemy.NotifyDeath();
-
     }
+
 }

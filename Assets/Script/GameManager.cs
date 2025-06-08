@@ -24,18 +24,18 @@ public class GameManager : MonoBehaviour
     {
         int wave = WaveManager.Instance != null ? WaveManager.Instance.GetCurrentWave() : 0;
 
-        // 1. Guardar datos para la ResultScene:
-        int xpGain = PlayerExperienceManager.Instance.GetExperienceThisSession(); // Ver abajo
-        ResultData.SetData(timePlayed, wave, xpGain);
+        // Guardar ambas esencias de la sesión para la ResultScene
+        int normalEssenceGain = PlayerExperienceManager.Instance.GetSessionEssence(WorldState.Normal);
+        int otherEssenceGain = PlayerExperienceManager.Instance.GetSessionEssence(WorldState.OtherWorld);
+        ResultData.SetData(timePlayed, wave, normalEssenceGain, otherEssenceGain);
 
-        // 2. Sumar XP de esta sesión a la total acumulada SOLO en GameOver (esto evita sumar 2 veces si reiniciás la escena)
-        PlayerExperienceManager.Instance.AddExperienceToTotal();
-
+        // Sumar ambas esencias de la sesión al total acumulado SOLO en GameOver
+        PlayerExperienceManager.Instance.AddEssenceSessionToTotal();
 
         AnalyticsManager.Instance.CurrentWave(wave);
         AnalyticsManager.Instance.RecordModifierUsage(GameModifiersManager.Instance.GetAllModifierUsageCounts());
 
-        // Reiniciar escena actual
         SceneManager.LoadScene("ResultScene");
     }
+
 }

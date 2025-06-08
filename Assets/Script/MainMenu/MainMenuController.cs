@@ -3,17 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    public UpgradesPanelUI upgradesPanel; // Asignalo desde el Inspector
+    public UpgradesPanelUI upgradesPanel;
 
+    [SerializeField] private string levelScene = "GameScene";
     private void Start()
     {
-        // Al entrar al menú, refrescá la UI de upgrades y XP
+        // Al entrar al menu, refresca la UI de upgrades y XP
         if (upgradesPanel != null)
+        {
             upgradesPanel.RefreshUI();
+        }
+
     }
     public void OnPlayButtonPressed()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(levelScene);
     }
     public void OnExitButtonPressed()
     {

@@ -10,7 +10,8 @@ public class UpgradesPanelUI : MonoBehaviour
     public Transform normalWorldUpgradesContainer;
     public Transform otherWorldUpgradesContainer;
     public UpgradeUIItem upgradeUIPrefab;
-    public TMP_Text playerXPText;
+    public TMP_Text normalEssenceText;
+    public TMP_Text otherWorldEssenceText;
 
     private void Start()
     {
@@ -19,8 +20,11 @@ public class UpgradesPanelUI : MonoBehaviour
 
     public void RefreshUI()
     {
-        int playerXP = PlayerExperienceManager.Instance.GetTotalExperience();
-        playerXPText.text = $"XP: {playerXP}";
+        int normalEssence = PlayerExperienceManager.Instance.GetTotalEssence(WorldState.Normal);
+        int otherWorldEssence = PlayerExperienceManager.Instance.GetTotalEssence(WorldState.OtherWorld);
+
+        normalEssenceText.text = $"{normalEssence}";
+        otherWorldEssenceText.text = $"{otherWorldEssence}";
 
         // Limpiá contenedores
         foreach (Transform child in generalUpgradesContainer) Destroy(child.gameObject);
@@ -32,9 +36,19 @@ public class UpgradesPanelUI : MonoBehaviour
         {
             bool unlocked = UpgradeManager.Instance.IsUnlocked(upgrade.upgradeId);
             UpgradeUIItem uiItem = Instantiate(upgradeUIPrefab, GetContainer(upgrade.category));
-            uiItem.Setup(upgrade, unlocked, playerXP, OnUnlockUpgrade);
+
+            // Decidí cuál essence mostrarle según la categoría
+            int playerEssence = upgrade.category switch
+            {
+                UpgradeCategory.General => Mathf.Min(normalEssence, otherWorldEssence), // O ambas, o lo que prefieras
+                UpgradeCategory.NormalWorld => normalEssence,
+                UpgradeCategory.OtherWorld => otherWorldEssence,
+                _ => 0,
+            };
+            uiItem.Setup(upgrade, unlocked, OnUnlockUpgrade);
         }
     }
+
 
     private Transform GetContainer(UpgradeCategory category)
     {
@@ -52,11 +66,43 @@ public class UpgradesPanelUI : MonoBehaviour
         var upgrade = UpgradeManager.Instance.GetUpgrades().FirstOrDefault(u => u.upgradeId == upgradeId);
         if (upgrade == null) return;
 
-        // Intentá desbloquear y restá XP solo si fue exitoso
-        if (UpgradeManager.Instance.TryUnlockUpgrade(upgradeId, PlayerExperienceManager.Instance.GetTotalExperience()))
+        bool unlocked = false;
+
+        switch (upgrade.category)
         {
-            PlayerExperienceManager.Instance.RemoveTotalExperience(upgrade.xpCost);
-            RefreshUI();
+            case UpgradeCategory.NormalWorld:
+                if (PlayerExperienceManager.Instance.GetTotalEssence(WorldState.Normal) >= upgrade.xpCost)
+                {
+                    unlocked = UpgradeManager.Instance.TryUnlockUpgrade(upgradeId, PlayerExperienceManager.Instance.GetTotalEssence(WorldState.Normal));
+                    if (unlocked)
+                        PlayerExperienceManager.Instance.RemoveEssence(WorldState.Normal, upgrade.xpCost);
+                }
+                break;
+
+            case UpgradeCategory.OtherWorld:
+                if (PlayerExperienceManager.Instance.GetTotalEssence(WorldState.OtherWorld) >= upgrade.xpCost)
+                {
+                    unlocked = UpgradeManager.Instance.TryUnlockUpgrade(upgradeId, PlayerExperienceManager.Instance.GetTotalEssence(WorldState.OtherWorld));
+                    if (unlocked)
+                        PlayerExperienceManager.Instance.RemoveEssence(WorldState.OtherWorld, upgrade.xpCost);
+                }
+                break;
+
+            case UpgradeCategory.General:
+                int half = Mathf.CeilToInt(upgrade.xpCost / 2f);
+                if (PlayerExperienceManager.Instance.GetTotalEssence(WorldState.Normal) >= half &&
+                    PlayerExperienceManager.Instance.GetTotalEssence(WorldState.OtherWorld) >= half)
+                {
+                    unlocked = UpgradeManager.Instance.TryUnlockUpgrade(upgradeId, half); // El valor no importa, solo para lógica interna
+                    if (unlocked)
+                        PlayerExperienceManager.Instance.RemoveEssenceBoth(upgrade.xpCost);
+                }
+                break;
         }
+
+        if (unlocked)
+            RefreshUI();
     }
+
+
 }

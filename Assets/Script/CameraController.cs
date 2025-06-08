@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -8,10 +10,36 @@ public class CameraController : MonoBehaviour
     public float maxZoom = 40f;
 
     private Camera cam;
+    [SerializeField] CinemachineCamera cam1;
+    [SerializeField] CinemachineCamera cam2;
+
+    void Awake()
+    {
+        if (cam1 != null)
+            CameraManager.Register(cam1);
+
+        if (cam2 != null)
+            CameraManager.Register(cam2);
+        CameraManager.SwitchCamera(cam2);
+
+        Debug.Log("Register CameraController");
+    }
 
     void Start()
     {
+
         cam = Camera.main;
+        Debug.Log("Arranca CameraController");
+        if (cam1 == null)
+            Debug.LogError("No hay referencia a cam1 (CinemachineCamera)");
+        else
+            StartCoroutine(DelayedSwitchCamera(cam1));
+    }
+
+    IEnumerator DelayedSwitchCamera(CinemachineCamera cam)
+    {
+        yield return null;
+        CameraManager.SwitchCamera(cam);
     }
 
     void Update()

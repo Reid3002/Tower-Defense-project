@@ -8,8 +8,9 @@ public class WaveUIController : MonoBehaviour
     [Header("Referencias UI")]
     [SerializeField] private TMP_Text waveCounterText;
     [SerializeField] private TMP_Text enemiesRemainingText;
-    //[SerializeField] private TMP_Text spawnMultiplierText;
-    [SerializeField] private TMP_Text experienceText;
+
+    [SerializeField] private TMP_Text normalEssenceText;
+    [SerializeField] private TMP_Text otherWorldEssenceText;
 
     private void Awake()
     {
@@ -40,14 +41,21 @@ public class WaveUIController : MonoBehaviour
     }
     public void UpdateExperienceUI()
     {
-        if (experienceText == null)
-        {
-            Debug.LogWarning("[WaveUIController] El campo experienceText no está asignado en el inspector.");
-            return;
-        }
-        int xp = PlayerExperienceManager.Instance.GetExperienceThisSession ();
-        experienceText.text = $"Puntos: {xp}";
+        int normal = PlayerExperienceManager.Instance.GetSessionEssence(WorldState.Normal);
+        int other = PlayerExperienceManager.Instance.GetSessionEssence(WorldState.OtherWorld);
+
+        if (normalEssenceText == null)
+            Debug.LogWarning("[WaveUIController] El campo normalEssenceText no está asignado en el inspector.");
+        else
+            normalEssenceText.text = $"{normal}";
+
+        if (otherWorldEssenceText == null)
+            Debug.LogWarning("[WaveUIController] El campo otherWorldEssenceText no está asignado en el inspector.");
+        else
+            otherWorldEssenceText.text = $"{other}";
     }
+
+
 
 
     /*public void UpdateSpawnMultiplierUI()
