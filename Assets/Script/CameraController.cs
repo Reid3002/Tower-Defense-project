@@ -22,18 +22,14 @@ public class CameraController : MonoBehaviour
             CameraManager.Register(cam2);
         CameraManager.SwitchCamera(cam2);
 
-        Debug.Log("Register CameraController");
     }
 
     void Start()
     {
 
         cam = Camera.main;
-        Debug.Log("Arranca CameraController");
-        if (cam1 == null)
-            Debug.LogError("No hay referencia a cam1 (CinemachineCamera)");
-        else
-            StartCoroutine(DelayedSwitchCamera(cam1));
+
+        StartCoroutine(DelayedSwitchCamera(cam1));
     }
 
     IEnumerator DelayedSwitchCamera(CinemachineCamera cam)

@@ -6,29 +6,35 @@ public class WaveManager : MonoBehaviour
 {
     public static WaveManager Instance { get; private set; }
 
+    [Header("Receta de oleadas (SO)")]
+    [SerializeField] private WaveRecipeList recipeList;
+    public WaveRecipeList RecipeList => recipeList;
+
+
+    [Header("Multiplicador global de cantidad de enemigos")]
+    [Range(0.5f, 3f)]
+    [SerializeField] private float enemyCountMultiplier = 1f;
+    public float EnemyCountMultiplier => enemyCountMultiplier;
+
     [Header("Configuración")]
     [SerializeField] private int maxWaves = 45;
-    [SerializeField] private int baseEnemiesPerWave = 3;
 
     private int currentWave = 0;
     private int enemiesAlive = 0;
-    //private int otherWorldEnemyCount = 0;
     private int enemiesThisWave = 0;
     private int consecutiveOtherWorldWaves = 0;
     private WorldState previousWorldState = WorldState.Normal;
 
     public bool WaveInProgress => enemiesAlive > 0;
+    public bool IsFirstWave => isFirstWave;
+    public bool IsLastWave() => currentWave >= maxWaves;
+
+    private bool isFirstWave = true;
+    private bool waveStarted = false;
+    private WorldState waveStartWorld;
 
     public event Action<int, int> OnWaveStarted;
     public event Action OnWaveEnded;
-
-    //public event Action<GoldTurretIncome> OnGoldTurretRegistered;
-
-    private bool isFirstWave = true;
-
-    public bool IsFirstWave => isFirstWave;
-    private bool waveStarted = false;
-    private WorldState waveStartWorld;
 
     private void Awake()
     {
@@ -87,18 +93,13 @@ public class WaveManager : MonoBehaviour
 
         int totalEnemies = CalculateEnemiesThisWave();
 
-        // Incluir jefes en el conteo manual
-        if (currentWave % 5 == 0)
-            totalEnemies++; // MiniBoss
-
-        if (currentWave % 15 == 0)
-            totalEnemies++; // Boss
-
-        enemiesThisWave = 0;
-        enemiesAlive = 0;
+        enemiesThisWave = totalEnemies;
+        enemiesAlive = totalEnemies;
 
         Debug.Log($"[WaveManager] Oleada {currentWave} iniciada con {totalEnemies} enemigos.");
         OnWaveStarted?.Invoke(currentWave, totalEnemies);
+        WaveEnemyGeneratorNormal.Instance.Spawn(currentWave, enemiesThisWave);
+
     }
 
     public void NotifyEnemyKilled()
@@ -120,7 +121,7 @@ public class WaveManager : MonoBehaviour
                 Core.Instance?.TakeDamage(1);
             }
 
-            // Upgrades
+            // Upgrades y recompensas por fin de oleada
             var upgradeMgr = UpgradeManager.Instance;
 
             // Oro pasivo (siempre al terminar una oleada)
@@ -149,13 +150,9 @@ public class WaveManager : MonoBehaviour
             OnWaveEnded?.Invoke();
         }
     }
-
-
     public int GetCurrentWave() => currentWave;
     public int GetEnemiesAlive() => enemiesAlive;
     public int GetEnemiesThisWave() => enemiesThisWave;
-    public bool IsLastWave() => currentWave >= maxWaves;
-
     private void CalculateWorldStreak()
     {
         var currentWorld = WorldManager.Instance.CurrentWorld;
@@ -173,34 +170,41 @@ public class WaveManager : MonoBehaviour
 
         previousWorldState = currentWorld;
     }
-
     private int CalculateEnemiesThisWave()
     {
-        int extraEnemies = 0;
+        if (recipeList == null)
+        {
+            Debug.LogWarning("[WaveManager] No se asignó el WaveRecipeList.");
+            return 0;
+        }
 
-        if (currentWave % 5 == 0)
-            extraEnemies++; // MiniBoss
+        var recipe = recipeList.waveRecipes.Find(r => r.waveNumber == currentWave);
+        if (recipe == null)
+        {
+            Debug.LogWarning($"No hay receta configurada para la ronda {currentWave}");
+            return 0;
+        }
 
-        if (currentWave % 15 == 0)
-            extraEnemies++; // Boss
+        int total = 0;
+        foreach (var step in recipe.steps)
+            total += Mathf.CeilToInt(step.count * enemyCountMultiplier);
 
-        int scaling = (currentWave - 1) * 2;
-        int bonus = Mathf.RoundToInt(GameModifiersManager.Instance.enemyCountMultiplier);
-
-        int total = baseEnemiesPerWave + scaling + bonus + extraEnemies;
-
-        Debug.Log($"[WaveManager] Total enemigos esta oleada: {total} (Base: {baseEnemiesPerWave}, Escalado: {scaling}, Bonus: {bonus}, Jefes: {extraEnemies})");
+        Debug.Log($"[WaveManager] Total enemigos esta oleada: {total} (receta ScriptableObject, multiplicador: {enemyCountMultiplier})");
         return total;
     }
-
-    public void RegisterEnemyManually()
+    /*public void RegisterEnemyManually()
     {
         enemiesAlive++;
         enemiesThisWave++;
         WaveUIController.Instance?.UpdateEnemiesRemaining(enemiesAlive);
 
         Debug.Log($"[WaveManager] Enemigo adicional registrado manualmente. Enemigos vivos: {enemiesAlive}");
-    }
+    }*/
 
+    // Permite modificar el multiplicador en runtime si querés (opcional)
+    public void SetEnemyCountMultiplier(float value)
+    {
+        enemyCountMultiplier = Mathf.Clamp(value, 0.5f, 3f);
+    }
 
 }

@@ -28,17 +28,35 @@ public class WaveUIController : MonoBehaviour
             WaveManager.Instance.OnWaveEnded += TryTriggerNextWave;
         }
     }
+    private int GetTotalEnemiesForWave(int waveNumber)
+    {
+        var recipeList = WaveManager.Instance != null ? WaveManager.Instance.RecipeList : null;
+        if (recipeList == null)
+            return 0;
 
-    public void UpdateWaveUI(int waveNumber, int totalEnemies)
+        var recipe = recipeList.waveRecipes.Find(r => r.waveNumber == waveNumber);
+        if (recipe == null)
+            return 0;
+
+        float multiplier = WaveManager.Instance != null ? WaveManager.Instance.EnemyCountMultiplier : 1f;
+        int total = 0;
+        foreach (var step in recipe.steps)
+            total += Mathf.CeilToInt(step.count * multiplier);
+
+        return total;
+    }
+
+
+    public void UpdateWaveUI(int waveNumber, int _)
     {
         if (waveCounterText != null)
             waveCounterText.text = $"Oleada: {waveNumber}";
 
-        UpdateEnemiesRemaining(totalEnemies);
+        int totalEnemiesThisWave = GetTotalEnemiesForWave(waveNumber);
+        UpdateEnemiesRemaining(totalEnemiesThisWave);
         UpdateExperienceUI();
-
-        //UpdateSpawnMultiplierUI();
     }
+
     public void UpdateExperienceUI()
     {
         int normal = PlayerExperienceManager.Instance.GetSessionEssence(WorldState.Normal);
@@ -55,57 +73,28 @@ public class WaveUIController : MonoBehaviour
             otherWorldEssenceText.text = $"{other}";
     }
 
-
-
-
-    /*public void UpdateSpawnMultiplierUI()
-    {
-        if (spawnMultiplierText == null) return;
-
-        float goldMultiplier = OtherWorldBonusController.Instance != null
-            ? OtherWorldBonusController.Instance.GetGoldBonusMultiplier()
-            : 1f;
-
-        float enemyMultiplier = OtherWorldBonusController.Instance != null
-            ? OtherWorldBonusController.Instance.GetEnemyBonusMultiplier()
-            : 1f;
-
-        spawnMultiplierText.text = $"Oro x{goldMultiplier:F2} | Enemigos x{enemyMultiplier:F2}";
-    }
-    */
-
     public void UpdateEnemiesRemaining(int remaining)
     {
         if (enemiesRemainingText == null) return;
 
-        int total = WaveManager.Instance.GetEnemiesThisWave();
+        // Obtener el total solo de la receta con multiplicador
+        int waveNumber = WaveManager.Instance.GetCurrentWave();
+        int total = 0;
+        var recipeList = WaveManager.Instance != null ? WaveManager.Instance.RecipeList : null;
+        if (recipeList != null)
+        {
+            var recipe = recipeList.waveRecipes.Find(r => r.waveNumber == waveNumber);
+            if (recipe != null)
+            {
+                float multiplier = WaveManager.Instance != null ? WaveManager.Instance.EnemyCountMultiplier : 1f;
+                foreach (var step in recipe.steps)
+                    total += Mathf.CeilToInt(step.count * multiplier);
+            }
+        }
 
-        int fast = EnemyTracker.CountEnemiesOfType(EnemyType.Fast);
-        int heavy = EnemyTracker.CountEnemiesOfType(EnemyType.Heavy);
-        int normal = fast + heavy;
-
-        int other = EnemyTracker.CountEnemies(WorldState.OtherWorld);
-        int bosses = EnemyTracker.CountEnemiesOfType(EnemyType.Boss);
-        int miniBosses = EnemyTracker.CountEnemiesOfType(EnemyType.MiniBoss);
-
-
-        string output = $"Total: {remaining} / {total}\n";
-
-        if (normal > 0)
-            output += $"Normal: {normal}\n";
-
-        if (other > 0)
-            output += $"OtherWorld: {other}\n";
-
-        if (miniBosses > 0)
-            output += $"MiniBosses: {miniBosses}\n";
-
-        if (bosses > 0)
-            output += $"Bosses: {bosses}\n";
-
-
-        enemiesRemainingText.text = output.TrimEnd(); // Elimina el salto final extra
+        enemiesRemainingText.text = $"Total: {remaining} / {total}";
     }
+
 
 
     private void TryTriggerNextWave()

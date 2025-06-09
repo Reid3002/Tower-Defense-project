@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour, IDamageDealer
 {
     [SerializeField] private EnemyData data;
     public EnemyData Data => data;
-    public EnemyType Type => data != null ? data.type : EnemyType.Unknown;
+    public EnemyType Type => data != null ? data.type : EnemyType.Minion;
 
     public EnemyHealth Health { get; private set; }
     public EnemyMovement Movement { get; private set; }
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour, IDamageDealer
 
         HealthBar?.Initialize(transform, Health.GetMaxHealth());
 
-        WaveManager.Instance?.RegisterEnemyManually();
+        //WaveManager.Instance?.RegisterEnemyManually();
 
     }
 

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 5886739814692587660}
   - component: {fileID: -4545498879265022580}
   m_Layer: 0
-  m_Name: EnemyFastPrefab
+  m_Name: EnemyMinionPrefab
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 62929b1e43a57094d9460a5f073d90a8, type: 2}
+  - {fileID: 2100000, guid: 03f6eac0427a3bc46bf055172c9751ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

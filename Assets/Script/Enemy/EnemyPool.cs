@@ -5,8 +5,9 @@ public class EnemyPool : MonoBehaviour
 {
     public static EnemyPool Instance;
 
-    [SerializeField] private GameObject heavyEnemyPrefab;
-    [SerializeField] private GameObject fastEnemyPrefab;
+    [SerializeField] private GameObject minionEnemyPrefab;
+    [SerializeField] private GameObject sprintEnemyPrefab;
+    [SerializeField] private GameObject bigEnemyPrefab;
     [SerializeField] private GameObject miniBossPrefab;
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private int initialSizePerType = 10;
@@ -26,8 +27,9 @@ public class EnemyPool : MonoBehaviour
         }
 
         // Inicializar objetos del pool
-        InitializePool(heavyEnemyPrefab, EnemyType.Heavy);
-        InitializePool(fastEnemyPrefab, EnemyType.Fast);
+        InitializePool(minionEnemyPrefab, EnemyType.Minion);
+        InitializePool(sprintEnemyPrefab, EnemyType.Sprint);
+        InitializePool(bigEnemyPrefab, EnemyType.Big);
         InitializePool(miniBossPrefab, EnemyType.MiniBoss, 2);
         InitializePool(bossPrefab, EnemyType.Boss, 1);
     }
@@ -54,11 +56,12 @@ public class EnemyPool : MonoBehaviour
         {
             GameObject prefab = type switch
             {
-                EnemyType.Heavy => heavyEnemyPrefab,
-                EnemyType.Fast => fastEnemyPrefab,
+                EnemyType.Minion => minionEnemyPrefab,
+                EnemyType.Sprint => sprintEnemyPrefab,
+                EnemyType.Big => sprintEnemyPrefab,
                 EnemyType.MiniBoss => miniBossPrefab,
                 EnemyType.Boss => bossPrefab,
-                _ => heavyEnemyPrefab,
+                _ => minionEnemyPrefab,
             };
 
             enemy = Instantiate(prefab);

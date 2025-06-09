@@ -6,7 +6,7 @@ public class ModifierTestKey : MonoBehaviour
 
     void Start()
     {
-        panelSelection = FindObjectOfType<ModifierPanelSelection>();
+        panelSelection = FindFirstObjectByType<ModifierPanelSelection>();
         if (panelSelection == null)
             Debug.LogWarning("[ModifierTestKey] No se encontró ModifierPanelSelection en la escena.");
     }

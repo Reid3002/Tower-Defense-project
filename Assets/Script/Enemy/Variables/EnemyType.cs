@@ -1,9 +1,8 @@
 ﻿public enum EnemyType
 {
-    Unknown,
-    Slow,
-    Fast,
-    Heavy,
+    Minion,
+    Sprint,
+    Big,
     MiniBoss,
     Boss
 }

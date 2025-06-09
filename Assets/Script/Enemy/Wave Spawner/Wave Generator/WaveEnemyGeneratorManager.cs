@@ -4,7 +4,7 @@ public class WaveEnemyGeneratorManager : MonoBehaviour
 {
     [Header("Referencias")]
     [SerializeField] private WaveEnemyGeneratorNormal normalGenerator;
-    [SerializeField] private WaveEnemyGeneratorOther otherGenerator;
+    
 
     private void Start()
     {
@@ -41,21 +41,6 @@ public class WaveEnemyGeneratorManager : MonoBehaviour
             int extraEnemies = Mathf.FloorToInt(baseEnemyCount * 0.25f); // +25% enemigos
             totalEnemies += extraEnemies;
             Debug.Log($"[WaveEnemyGeneratorManager] Penalidad por corrupción activa. Enemigos extra: {extraEnemies}");
-        }
-
-        // Penalidad OtherWorld: bonus por estar en mundo oscuro
-        int extraOtherEnemies = Mathf.Max(0, (waveNumber - otherGenerator.StartingWave)) * 2;
-
-        if (inOtherWorld)
-        {
-            int totalOtherEnemies = totalEnemies + extraOtherEnemies;
-            Debug.Log($"[WaveEnemyGeneratorManager] Oleada {waveNumber} en OtherWorld. Enemigos: {totalEnemies} + bonus {extraOtherEnemies} => {totalOtherEnemies}");
-            otherGenerator.Spawn(waveNumber, totalOtherEnemies);
-        }
-        else
-        {
-            Debug.Log($"[WaveEnemyGeneratorManager] Oleada {waveNumber} en Normal. Enemigos: {totalEnemies}");
-            normalGenerator.Spawn(waveNumber, totalEnemies);
         }
     }
 }

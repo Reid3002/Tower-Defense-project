@@ -4,8 +4,9 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Prefabs del mundo normal")]
-    [SerializeField] private GameObject heavyEnemyPrefab;
-    [SerializeField] private GameObject fastEnemyPrefab;
+    [SerializeField] private GameObject minionEnemyPrefab;
+    [SerializeField] private GameObject sprintEnemyPrefab;
+    [SerializeField] private GameObject bigEnemyPrefab;
     [SerializeField] private GameObject miniBossPrefab;
     [SerializeField] private GameObject bossPrefab;
 
@@ -16,8 +17,9 @@ public class EnemySpawner : MonoBehaviour
     {
         enemyPrefabs = new Dictionary<EnemyType, GameObject>
         {
-            { EnemyType.Heavy, heavyEnemyPrefab },
-            { EnemyType.Fast, fastEnemyPrefab },
+            { EnemyType.Minion, minionEnemyPrefab },
+            { EnemyType.Sprint, sprintEnemyPrefab },
+            { EnemyType.Big, bigEnemyPrefab },
             { EnemyType.MiniBoss, miniBossPrefab },
             { EnemyType.Boss, bossPrefab }
         };

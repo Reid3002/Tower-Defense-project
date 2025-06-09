@@ -1,25 +1,25 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveEnemyGeneratorNormal : WaveEnemyGeneratorBase
 {
+    public static WaveEnemyGeneratorNormal Instance;
+    private float EnemyCountMultiplier => WaveManager.Instance != null ? WaveManager.Instance.EnemyCountMultiplier : 1f;
+
     protected override WorldState TargetWorld => WorldState.Normal;
 
-    // Ya no usaremos GetEnemyType(), lo definimos dentro del bucle.
-
-    protected override int GetEnemyCount(int baseCount)
+    private void Awake()
     {
-        // Sin modificador
-        return baseCount;
+        if (Instance == null) Instance = this;
     }
-
-    public new void Spawn(int waveNumber, int totalEnemies)
+    public new void Spawn(int waveNumber, int _)
     {
         if (WorldManager.Instance.CurrentWorld != TargetWorld) return;
-        StartCoroutine(SpawnEnemies(waveNumber, totalEnemies));
+        StartCoroutine(SpawnEnemies(waveNumber));
     }
 
-    protected override IEnumerator SpawnEnemies(int waveNumber, int totalEnemies)
+    protected IEnumerator SpawnEnemies(int waveNumber)
     {
         Vector3[] path = gridManager.GetPathPositions();
         if (path == null || path.Length == 0)
@@ -28,38 +28,41 @@ public class WaveEnemyGeneratorNormal : WaveEnemyGeneratorBase
             yield break;
         }
 
-        bool miniBossSpawned = false;
-        bool bossSpawned = false;
-
-        for (int i = 0; i < totalEnemies; i++)
+        // Obtener la receta desde WaveManager
+        var recipeList = WaveManager.Instance != null ? WaveManager.Instance.RecipeList : null;
+        if (recipeList == null)
         {
-            EnemyType typeToSpawn;
-
-            // Boss tiene prioridad si ambas condiciones se cumplen
-            if (waveNumber % 15 == 0 && !bossSpawned)
-            {
-                typeToSpawn = EnemyType.Boss;
-                bossSpawned = true;
-            }
-            else if (waveNumber % 5 == 0 && !miniBossSpawned)
-            {
-                typeToSpawn = EnemyType.MiniBoss;
-                miniBossSpawned = true;
-            }
-            else
-            {
-                typeToSpawn = (Random.value < 0.5f) ? EnemyType.Fast : EnemyType.Heavy;
-            }
-
-            Enemy enemy = enemySpawner.SpawnEnemy(path[^1], path, typeToSpawn);
-            if (enemy != null)
-            {
-                enemy.SetOriginWorld(TargetWorld);
-            }
-
-            yield return new WaitForSeconds(spawnDelay);
+            Debug.LogWarning("No se encontró WaveRecipeList en WaveManager.");
+            yield break;
+        }
+        WaveRecipe recipe = recipeList.waveRecipes.Find(r => r.waveNumber == waveNumber);
+        if (recipe == null)
+        {
+            Debug.LogWarning($"No hay receta configurada para la ronda {waveNumber}");
+            yield break;
         }
 
-        Debug.Log($"[{GetType().Name}] Oleada {WaveManager.Instance.GetCurrentWave()} - {TargetWorld} - Generados: {totalEnemies} enemigos.");
+        int totalSpawned = 0;
+
+        foreach (var step in recipe.steps)
+        {
+            int realCount = Mathf.CeilToInt(step.count * EnemyCountMultiplier);
+
+            for (int i = 0; i < realCount; i++)
+            {
+                Enemy enemy = enemySpawner.SpawnEnemy(path[0], path, step.enemyType);
+                if (enemy != null)
+                    enemy.SetOriginWorld(TargetWorld);
+
+                totalSpawned++;
+                if (i < realCount - 1)
+                    yield return new WaitForSeconds(step.interval);
+            }
+            if (step.waitAfterStep > 0)
+                yield return new WaitForSeconds(step.waitAfterStep);
+        }
+
+        Debug.Log($"[{GetType().Name}] Oleada {waveNumber} - {TargetWorld} - Generados: {totalSpawned} enemigos.");
     }
+
 }

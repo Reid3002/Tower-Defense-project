@@ -3069,8 +3069,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c697644b35ac2e94d8674ff9d277239a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heavyEnemyPrefab: {fileID: 5019013483156572802, guid: c8c5ab4caf864f141ba5ee3f4f967949, type: 3}
-  fastEnemyPrefab: {fileID: 5019013483156572802, guid: 678800d79bc228a4d95e427c9245fa04, type: 3}
+  minionEnemyPrefab: {fileID: 5019013483156572802, guid: 3886f9b1e5167534cb2b705ebb6935d6, type: 3}
+  sprintEnemyPrefab: {fileID: 5019013483156572802, guid: 678800d79bc228a4d95e427c9245fa04, type: 3}
+  bigEnemyPrefab: {fileID: 5019013483156572802, guid: 6900e95feda5f1542940cf9e4519e655, type: 3}
   miniBossPrefab: {fileID: 5019013483156572802, guid: 066f856d370124e4eb2c3da597d61f14, type: 3}
   bossPrefab: {fileID: 5019013483156572802, guid: 6900e95feda5f1542940cf9e4519e655, type: 3}
   initialSizePerType: 10
@@ -3086,8 +3087,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c859527d5aeb1b141a13be6f3116f677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heavyEnemyPrefab: {fileID: 5019013483156572802, guid: c8c5ab4caf864f141ba5ee3f4f967949, type: 3}
-  fastEnemyPrefab: {fileID: 5019013483156572802, guid: 678800d79bc228a4d95e427c9245fa04, type: 3}
+  minionEnemyPrefab: {fileID: 5019013483156572802, guid: 3886f9b1e5167534cb2b705ebb6935d6, type: 3}
+  sprintEnemyPrefab: {fileID: 5019013483156572802, guid: 678800d79bc228a4d95e427c9245fa04, type: 3}
+  bigEnemyPrefab: {fileID: 5019013483156572802, guid: 6900e95feda5f1542940cf9e4519e655, type: 3}
   miniBossPrefab: {fileID: 5019013483156572802, guid: 066f856d370124e4eb2c3da597d61f14, type: 3}
   bossPrefab: {fileID: 5019013483156572802, guid: 6900e95feda5f1542940cf9e4519e655, type: 3}
 --- !u!114 &775839251
@@ -3130,8 +3132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff911c95ea5eba4da1173fffe07c6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recipeList: {fileID: 11400000, guid: dec048e712bc2234283f22d329c4aa74, type: 2}
+  enemyCountMultiplier: 1
   maxWaves: 45
-  baseEnemiesPerWave: 3
 --- !u!114 &777039455 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2229912415034377029, guid: 7a26fb8d99841ed4cabd4483f4cf3325, type: 3}
@@ -5862,7 +5865,6 @@ GameObject:
   - component: {fileID: 1721625335}
   - component: {fileID: 1721625338}
   - component: {fileID: 1721625337}
-  - component: {fileID: 1721625336}
   m_Layer: 0
   m_Name: Wave Generator Manager
   m_TagString: Untagged
@@ -5885,22 +5887,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1224897185}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1721625336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721625334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa6d20f29e576fd4495df7e51e98964b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemySpawner: {fileID: 775839250}
-  gridManager: {fileID: 412535789}
-  spawnDelay: 0.7
-  startingWave: 6
 --- !u!114 &1721625337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5929,7 +5915,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalGenerator: {fileID: 1721625337}
-  otherGenerator: {fileID: 1721625336}
 --- !u!1 &1725489539
 GameObject:
   m_ObjectHideFlags: 0
@@ -6114,7 +6099,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 36.7, y: 162.5}
+  m_AnchoredPosition: {x: 36.69995, y: 162.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1782818835 stripped

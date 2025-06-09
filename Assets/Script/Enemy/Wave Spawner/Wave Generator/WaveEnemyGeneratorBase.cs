@@ -12,7 +12,7 @@ public abstract class WaveEnemyGeneratorBase : MonoBehaviour
 
     protected virtual EnemyType GetEnemyType()
     {
-        return EnemyType.Heavy; // Por defecto, o el tipo común en esa implementación
+        return EnemyType.Minion; // Por defecto, o el tipo común en esa implementación
     }
 
     public void Spawn(int waveNumber, int totalEnemies)
