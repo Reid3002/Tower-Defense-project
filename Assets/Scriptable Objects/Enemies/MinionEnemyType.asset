@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e920c7b773db724c9fe79b0308cb66e, type: 3}
-  m_Name: BossEnemyData
+  m_Name: MinionEnemyType
   m_EditorClassIdentifier: 
-  enemyName: Boss
-  maxHealth: 500
-  defense: 10
-  moveSpeed: 1.5
-  damageToCore: 1000
+  enemyName: Minion
+  maxHealth: 5
+  defense: 0
+  moveSpeed: 2
+  damageToCore: 1
   originWorld: 0
-  type: 4
+  type: 0

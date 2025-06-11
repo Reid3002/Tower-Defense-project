@@ -18,4 +18,4 @@ MonoBehaviour:
   moveSpeed: 1
   damageToCore: 1
   originWorld: 0
-  type: 3
+  type: 2
