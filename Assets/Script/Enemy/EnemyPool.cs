@@ -10,6 +10,10 @@ public class EnemyPool : MonoBehaviour
     [SerializeField] private GameObject bigEnemyPrefab;
     [SerializeField] private GameObject miniBossPrefab;
     [SerializeField] private GameObject bossPrefab;
+    [SerializeField] private GameObject superMinionPrefab;
+    [SerializeField] private GameObject superSprintPrefab;
+    [SerializeField] private GameObject superBigPrefab;
+
     [SerializeField] private int initialSizePerType = 10;
 
     public Dictionary<EnemyType, Queue<GameObject>> pools = new();
@@ -32,6 +36,10 @@ public class EnemyPool : MonoBehaviour
         InitializePool(bigEnemyPrefab, EnemyType.Big);
         InitializePool(miniBossPrefab, EnemyType.MiniBoss, 2);
         InitializePool(bossPrefab, EnemyType.Boss, 1);
+        InitializePool(superMinionPrefab, EnemyType.SuperMinion);
+        InitializePool(superSprintPrefab, EnemyType.SuperSprint);
+        InitializePool(superBigPrefab, EnemyType.SuperBig);
+
     }
 
     void InitializePool(GameObject prefab, EnemyType type, int amount = -1)
@@ -58,9 +66,12 @@ public class EnemyPool : MonoBehaviour
             {
                 EnemyType.Minion => minionEnemyPrefab,
                 EnemyType.Sprint => sprintEnemyPrefab,
-                EnemyType.Big => sprintEnemyPrefab,
+                EnemyType.Big => bigEnemyPrefab,
                 EnemyType.MiniBoss => miniBossPrefab,
                 EnemyType.Boss => bossPrefab,
+                EnemyType.SuperMinion => superMinionPrefab,
+                EnemyType.SuperSprint => superSprintPrefab,
+                EnemyType.SuperBig => superBigPrefab,
                 _ => minionEnemyPrefab,
             };
 

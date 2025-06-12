@@ -9,7 +9,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject bigEnemyPrefab;
     [SerializeField] private GameObject miniBossPrefab;
     [SerializeField] private GameObject bossPrefab;
-
+    [SerializeField] private GameObject superMinionPrefab;
+    [SerializeField] private GameObject superSprintPrefab;
+    [SerializeField] private GameObject superBigPrefab;
 
     private Dictionary<EnemyType, GameObject> enemyPrefabs;
 
@@ -21,7 +23,11 @@ public class EnemySpawner : MonoBehaviour
             { EnemyType.Sprint, sprintEnemyPrefab },
             { EnemyType.Big, bigEnemyPrefab },
             { EnemyType.MiniBoss, miniBossPrefab },
-            { EnemyType.Boss, bossPrefab }
+            { EnemyType.Boss, bossPrefab },
+            { EnemyType.SuperMinion, superMinionPrefab },
+            { EnemyType.SuperSprint, superSprintPrefab },
+            { EnemyType.SuperBig, superBigPrefab },
+
         };
     }
 

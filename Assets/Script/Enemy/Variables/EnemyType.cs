@@ -4,5 +4,8 @@
     Sprint,
     Big,
     MiniBoss,
-    Boss
+    Boss,
+    SuperMinion,
+    SuperSprint,
+    SuperBig
 }

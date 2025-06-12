@@ -15,7 +15,7 @@ MonoBehaviour:
   waveRecipes:
   - waveNumber: 1
     steps:
-    - enemyType: 1
+    - enemyType: 0
       count: 10
       interval: 2
       waitAfterStep: 0
@@ -87,10 +87,6 @@ MonoBehaviour:
       count: 4
       interval: 0.3
       waitAfterStep: 0.7
-    - enemyType: 3
-      count: 1
-      interval: 1
-      waitAfterStep: 1
   - waveNumber: 6
     steps:
     - enemyType: 1
@@ -100,7 +96,7 @@ MonoBehaviour:
     - enemyType: 0
       count: 5
       interval: 1
-      waitAfterStep: 0
+      waitAfterStep: 1
     - enemyType: 0
       count: 5
       interval: 1
@@ -179,7 +175,7 @@ MonoBehaviour:
       count: 5
       interval: 1
       waitAfterStep: 3
-  - waveNumber: 9
+  - waveNumber: 10
     steps:
     - enemyType: 2
       count: 2
@@ -190,28 +186,532 @@ MonoBehaviour:
       interval: 1
       waitAfterStep: 3
     - enemyType: 0
-      count: 4
-      interval: 0.5
+      count: 5
+      interval: 0.7
+      waitAfterStep: 3
+    - enemyType: 0
+      count: 5
+      interval: 0.7
+      waitAfterStep: 4
+    - enemyType: 1
+      count: 2
+      interval: 1
       waitAfterStep: 2
     - enemyType: 1
-      count: 5
+      count: 2
       interval: 1
-      waitAfterStep: 3
+      waitAfterStep: 2
+    - enemyType: 1
+      count: 2
+      interval: 1
+      waitAfterStep: 2
   - waveNumber: 11
     steps:
     - enemyType: 2
-      count: 2
-      interval: 0.5
-      waitAfterStep: 1
-    - enemyType: 3
       count: 1
-      interval: 1
-      waitAfterStep: 3
+      interval: 0
+      waitAfterStep: 1
     - enemyType: 0
-      count: 4
-      interval: 0.5
+      count: 2
+      interval: 0.3
+      waitAfterStep: 1
+    - enemyType: 1
+      count: 2
+      interval: 0.3
+      waitAfterStep: 2
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 0
+      count: 2
+      interval: 0.3
+      waitAfterStep: 1
+    - enemyType: 1
+      count: 2
+      interval: 0.3
+      waitAfterStep: 2
+  - waveNumber: 12
+    steps:
+    - enemyType: 1
+      count: 7
+      interval: 1
+      waitAfterStep: 2
+    - enemyType: 1
+      count: 6
+      interval: 0.7
       waitAfterStep: 2
     - enemyType: 1
       count: 5
+      interval: 0.5
+      waitAfterStep: 1.5
+    - enemyType: 1
+      count: 4
+      interval: 0.3
+      waitAfterStep: 1.5
+  - waveNumber: 12
+    steps:
+    - enemyType: 2
+      count: 7
       interval: 1
+      waitAfterStep: 2
+    - enemyType: 0
+      count: 20
+      interval: 0.7
+      waitAfterStep: 0.5
+  - waveNumber: 14
+    steps:
+    - enemyType: 0
+      count: 40
+      interval: 0.1
+      waitAfterStep: 2
+  - waveNumber: 15
+    steps:
+    - enemyType: 1
+      count: 4
+      interval: 0.7
+      waitAfterStep: 0.7
+    - enemyType: 0
+      count: 7
+      interval: 0.7
+      waitAfterStep: 0.7
+    - enemyType: 2
+      count: 4
+      interval: 0.5
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 4
+      interval: 0.5
+      waitAfterStep: 0.5
+    - enemyType: 0
+      count: 7
+      interval: 0.7
+      waitAfterStep: 0.5
+    - enemyType: 1
+      count: 4
+      interval: 0.7
+      waitAfterStep: 0.5
+  - waveNumber: 16
+    steps:
+    - enemyType: 2
+      count: 7
+      interval: 1.5
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 7
+      interval: 1
+      waitAfterStep: 0.7
+    - enemyType: 2
+      count: 7
+      interval: 0.7
+      waitAfterStep: 0.7
+  - waveNumber: 17
+    steps:
+    - enemyType: 0
+      count: 11
+      interval: 0.5
+      waitAfterStep: 1
+    - enemyType: 1
+      count: 4
+      interval: 0.3
+      waitAfterStep: 1
+    - enemyType: 0
+      count: 11
+      interval: 0.5
+      waitAfterStep: 1
+    - enemyType: 1
+      count: 4
+      interval: 0.3
+      waitAfterStep: 1
+    - enemyType: 0
+      count: 11
+      interval: 0.5
+      waitAfterStep: 1
+    - enemyType: 1
+      count: 4
+      interval: 0.3
+      waitAfterStep: 1
+  - waveNumber: 18
+    steps:
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+    - enemyType: 2
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 1
+      interval: 0
+      waitAfterStep: 0.3
+    - enemyType: 0
+      count: 1
+      interval: 0
+      waitAfterStep: 1
+  - waveNumber: 19
+    steps:
+    - enemyType: 2
+      count: 4
+      interval: 0.1
+      waitAfterStep: 2
+    - enemyType: 2
+      count: 4
+      interval: 0.1
+      waitAfterStep: 2
+    - enemyType: 2
+      count: 4
+      interval: 0.1
+      waitAfterStep: 2
+    - enemyType: 2
+      count: 4
+      interval: 0.1
+      waitAfterStep: 2
+    - enemyType: 2
+      count: 4
+      interval: 0.1
+      waitAfterStep: 2
+    - enemyType: 2
+      count: 4
+      interval: 0.1
+      waitAfterStep: 2
+    - enemyType: 2
+      count: 4
+      interval: 0.1
+      waitAfterStep: 2
+  - waveNumber: 20
+    steps:
+    - enemyType: 3
+      count: 2
+      interval: 2
+      waitAfterStep: 4
+    - enemyType: 1
+      count: 6
+      interval: 0.1
+      waitAfterStep: 1
+    - enemyType: 0
+      count: 15
+      interval: 0.2
+      waitAfterStep: 2
+    - enemyType: 0
+      count: 15
+      interval: 0.2
+      waitAfterStep: 2
+    - enemyType: 0
+      count: 15
+      interval: 0.2
+      waitAfterStep: 2
+    - enemyType: 1
+      count: 6
+      interval: 0.1
+      waitAfterStep: 2
+  - waveNumber: 21
+    steps:
+    - enemyType: 2
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.5
+    - enemyType: 0
+      count: 5
+      interval: 0.3
+      waitAfterStep: 0.5
+    - enemyType: 1
+      count: 3
+      interval: 0.1
+      waitAfterStep: 0.5
+    - enemyType: 2
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.5
+    - enemyType: 0
+      count: 5
+      interval: 0.3
+      waitAfterStep: 0.5
+    - enemyType: 1
+      count: 3
+      interval: 0.1
+      waitAfterStep: 0.5
+    - enemyType: 2
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.5
+    - enemyType: 0
+      count: 5
+      interval: 0.3
+      waitAfterStep: 0.5
+    - enemyType: 1
+      count: 3
+      interval: 0.1
+      waitAfterStep: 0.5
+    - enemyType: 2
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.5
+    - enemyType: 0
+      count: 5
+      interval: 0.3
+      waitAfterStep: 0.5
+    - enemyType: 1
+      count: 3
+      interval: 0.1
+      waitAfterStep: 0.5
+    - enemyType: 2
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.5
+    - enemyType: 0
+      count: 5
+      interval: 0.3
+      waitAfterStep: 0.5
+    - enemyType: 1
+      count: 3
+      interval: 0.1
+      waitAfterStep: 0.5
+  - waveNumber: 22
+    steps:
+    - enemyType: 2
+      count: 34
+      interval: 0.2
+      waitAfterStep: 0.2
+    - enemyType: 1
+      count: 2
+      interval: 0.5
+      waitAfterStep: 0.2
+  - waveNumber: 23
+    steps:
+    - enemyType: 0
+      count: 12
+      interval: 0.2
+      waitAfterStep: 0.2
+    - enemyType: 2
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.2
+    - enemyType: 0
+      count: 12
+      interval: 0.2
+      waitAfterStep: 0.2
+    - enemyType: 2
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.2
+    - enemyType: 0
+      count: 12
+      interval: 0.2
+      waitAfterStep: 0.2
+    - enemyType: 2
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.2
+    - enemyType: 0
+      count: 12
+      interval: 0.2
+      waitAfterStep: 0.2
+    - enemyType: 2
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.2
+  - waveNumber: 24
+    steps:
+    - enemyType: 1
+      count: 2
+      interval: 0.2
+      waitAfterStep: 1
+    - enemyType: 1
+      count: 2
+      interval: 0.2
+      waitAfterStep: 1
+    - enemyType: 1
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.7
+    - enemyType: 1
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.7
+    - enemyType: 1
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.5
+    - enemyType: 1
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.5
+    - enemyType: 1
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 2
+      interval: 0.2
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 4
+      interval: 0.1
+      waitAfterStep: 0.7
+    - enemyType: 1
+      count: 4
+      interval: 0.1
+      waitAfterStep: 0.7
+    - enemyType: 1
+      count: 4
+      interval: 0.1
+      waitAfterStep: 0.5
+    - enemyType: 1
+      count: 4
+      interval: 0.1
+      waitAfterStep: 0.5
+    - enemyType: 1
+      count: 4
+      interval: 0.1
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 4
+      interval: 0.1
+      waitAfterStep: 0.3
+    - enemyType: 1
+      count: 13
+      interval: 0.1
+      waitAfterStep: 1
+  - waveNumber: 25
+    steps:
+    - enemyType: 0
+      count: 31
+      interval: 0.1
+      waitAfterStep: 3
+    - enemyType: 0
+      count: 31
+      interval: 0.1
+      waitAfterStep: 3
+    - enemyType: 0
+      count: 31
+      interval: 0.1
       waitAfterStep: 3
