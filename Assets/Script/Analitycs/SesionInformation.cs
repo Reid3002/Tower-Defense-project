@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class GlobalInformation : Unity.Services.Analytics.Event
+public class SesionInformation : Unity.Services.Analytics.Event
 {
-    public GlobalInformation() : base("GlobalInformation")
+    public SesionInformation() : base("SesionInformation")
     {
 
     }
 
     public string MostPlayedWorld { set { SetParameter("MostPlayedWorld", value); } }
 
-    public int WorldSitchAmmount { set { SetParameter("WorldSitchAmmount", value); } }
+    public int WorldSwitchAmmount { set { SetParameter("WorldSwitchAmmount", value); } }
 
     public int Deaths { set { SetParameter("Deaths", value); } }
 

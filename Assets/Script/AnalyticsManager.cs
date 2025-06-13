@@ -24,7 +24,17 @@ public class AnalyticsManager : MonoBehaviour
 
     //--------------------------------------------------------------------------------
 
+    //-------------Sesion Variables-------------------------------------------------------------------
+    private float timeSpentOnNormalWorld = 0;
+    private float timeSpentOnOtherWorld = 0;
+    private int numberOfTimesSwitched = 0;
+    private float sesionTime = 0;
 
+
+    private int numberOfDeaths;
+    private Dictionary<string, int> modsChosen = new Dictionary<string, int>();
+
+    //--------------------------------------------------------------------------------
 
 
     private async void Awake()
@@ -42,6 +52,27 @@ public class AnalyticsManager : MonoBehaviour
             AnalyticsService.Instance.StartDataCollection();
             isInitialized = true; // Ahora se inicializa correctamente
             Debug.Log("Analytics inicializado correctamente");
+        }
+    }
+
+    private void Start()
+    {
+        WorldManager.OnWorldChanged += GetWorldSwitch;
+        Core.OnCoreDestroyed += GetDeaths;
+        ModifierPanelSelection.Instance.onModifierChosenAnalitics += CountModifiers;
+    }
+
+    private void Update()
+    {
+        sesionTime += Time.deltaTime;
+
+        if(WorldManager.Instance.CurrentWorld == WorldState.Normal)
+        {
+            timeSpentOnNormalWorld += Time.deltaTime;
+        }
+        else if (WorldManager.Instance.CurrentWorld == WorldState.OtherWorld)
+        {
+            timeSpentOnOtherWorld += Time.deltaTime;
         }
     }
 
@@ -150,7 +181,28 @@ public class AnalyticsManager : MonoBehaviour
         AnalyticsService.Instance.Flush();
         Debug.Log("Wave info sent");
 
-    }  
+    }
 
+    private void GetWorldSwitch(WorldState world)
+    {
+        numberOfTimesSwitched++;
+    }
+
+    private void GetDeaths()
+    {
+        numberOfDeaths++;
+    }
+
+    private void CountModifiers(IGameModifier modifier)
+    {
+        if (modsChosen.ContainsKey(modifier.Name))
+        {
+            modsChosen[modifier.Name]++;
+        }
+        else
+        {
+            modsChosen.Add(modifier.Name, 1);
+        }
+    }
 
 }

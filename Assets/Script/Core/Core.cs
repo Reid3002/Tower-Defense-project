@@ -13,6 +13,7 @@ public class Core : MonoBehaviour
     public static Core Instance;
 
     public static event Action OnCoreDamaged;
+    public static event Action OnCoreDestroyed;
 
     void Awake()
     {
@@ -77,6 +78,7 @@ public class Core : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            OnCoreDestroyed?.Invoke();
             GameManager.Instance.GameOver();
             return;
         }

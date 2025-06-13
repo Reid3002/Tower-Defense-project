@@ -58,6 +58,7 @@ public class WaveManager : MonoBehaviour
 
         OnWaveStarted += AnaliticsWaveStart;
         OnWaveEnded += AnaliticsWaveEnd;
+        ModifierPanelSelection.Instance.onModifierChosenAnalitics += GetModifierForThisWave;
     }
 
     private void OnEnable()
@@ -295,6 +296,11 @@ public class WaveManager : MonoBehaviour
     private void RecordGoldEarned(int amount)
     {
         goldEarned += amount;
+    }
+
+    private void GetModifierForThisWave(IGameModifier modifier)
+    {
+        modifierForThisWave = modifier;
     }
 
 }

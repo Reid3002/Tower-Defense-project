@@ -18,13 +18,12 @@ public class WorldManager : MonoBehaviour
     [SerializeField] private float shiftCooldown = 10f;
     private float lastShiftTime = -999f;
 
-
     void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
-            Destroy(gameObject);
+            Destroy(gameObject);        
     }
 
     void Update()
@@ -32,7 +31,7 @@ public class WorldManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J)) // o la tecla que elijas
         {
             TryShiftWorld();
-        }
+        }       
     }
 
     public void TryShiftWorld()
@@ -69,5 +68,5 @@ public class WorldManager : MonoBehaviour
         shiftCooldown += amount;
         Debug.Log($"[WorldManager] Nuevo shiftCooldown: {shiftCooldown} segundos.");
     }
-
+    
 }

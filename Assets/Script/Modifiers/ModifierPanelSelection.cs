@@ -18,6 +18,8 @@ public class ModifierPanelSelection : MonoBehaviour
     public static ModifierPanelSelection Instance { get; private set; }
     void Awake() { Instance = this; }
 
+    public Action<IGameModifier> onModifierChosenAnalitics;
+
     public void OpenPanel(Action callback)
     {
         panel.SetActive(true);
@@ -65,14 +67,12 @@ public class ModifierPanelSelection : MonoBehaviour
         bool addLegendary = GameModifiersManager.Instance.WillAddLegendaryAfter(modifier: currentOptions[idx]);
         GameModifiersManager.Instance.ApplyModifier(currentOptions[idx]);
 
-
-        WaveManager.Instance.modifierForThisWave = currentOptions[idx];
-
         // SOLO ocultá el panel si NO se va a mostrar legendario
         if (!addLegendary)
             panel.SetActive(false);
 
         onModifierChosen?.Invoke();
+        onModifierChosenAnalitics?.Invoke(currentOptions[idx]);
     }
 
 
