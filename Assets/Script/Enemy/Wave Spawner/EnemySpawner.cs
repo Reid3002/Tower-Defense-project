@@ -49,6 +49,8 @@ public class EnemySpawner : MonoBehaviour
         enemy.SetOriginWorld(WorldManager.Instance.CurrentWorld);
         enemy.WorldLogic.UpdateVisibility();
 
+        WaveManager.Instance.RecordEnemyTypesSpawned(enemy);
+
         return enemy;
     }
 }

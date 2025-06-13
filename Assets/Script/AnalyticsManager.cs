@@ -3,12 +3,29 @@ using System.Linq;
 using Unity.Services.Analytics;
 using Unity.Services.Core;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
 public class AnalyticsManager : MonoBehaviour
 {
     public static AnalyticsManager Instance;
     private bool isInitialized = false;
+
+
+    //---------Wave Variables----------------------------------------------------------
+
+    private int _waveNumber;
+    private int _enemiesSpawned;
+    private string _modifierForThisWave;
+    private int _enemiesDefeated;
+    private int _goldEarned;
+    private float _timeTakenToFinishWave;
+    private string _mostSpawnedEnemy;
+
+    //--------------------------------------------------------------------------------
+
+
+
 
     private async void Awake()
     {
@@ -103,6 +120,37 @@ public class AnalyticsManager : MonoBehaviour
         AnalyticsService.Instance.Flush();
         Debug.Log($"Eventos enviados: Tile_Chosen, Cantidad: {tilesChosen.Count}");
     }
+    
+    public void RecordWaveInfoStart(int waveNumber, int enemiesSpawned, string modifierForThisWave = "none")
+    {
+        _waveNumber = waveNumber;
+        _enemiesSpawned = enemiesSpawned;
+        _modifierForThisWave = modifierForThisWave;
+    }
+
+    public void RecordWaveInfoEnd(int goldEarned, float timeTakenToFinishWave, int enemiesDefeated = 0, string mostSpawnedEnemy = "none", string enemyType1 = "none", int enemiesType1Spawned = 0, string enemyType2 = "none", int enemiesType2Spawned = 0, string enemyType3 = "none", int enemiesType3Spawned = 0)
+    {
+        _goldEarned = goldEarned;
+        _timeTakenToFinishWave = timeTakenToFinishWave;
+        _enemiesDefeated = enemiesDefeated;
+        _mostSpawnedEnemy = mostSpawnedEnemy;
+
+        WaveInformation waveInformation = new WaveInformation()
+        {
+            WaveNumber = _waveNumber,
+            EnemiesSpawned = _enemiesSpawned,
+            EnemiesDefeated = _enemiesDefeated,
+            MostSpawnedEnemy = _mostSpawnedEnemy,
+            ModifierForThisWave = _modifierForThisWave,
+            GoldEarned = _goldEarned,
+            TimeTakenToFinishWave = _timeTakenToFinishWave,
+        };
+        AnalyticsService.Instance.RecordEvent(waveInformation);
+
+        AnalyticsService.Instance.Flush();
+        Debug.Log("Wave info sent");
+
+    }  
 
 
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -36,12 +38,26 @@ public class WaveManager : MonoBehaviour
     public event Action<int, int> OnWaveStarted;
     public event Action OnWaveEnded;
 
+    //------------------------Analitycs--------------------------------------
+    public IGameModifier modifierForThisWave = null;
+    private int enemiesDefeated = 0;
+    private Dictionary<string, int> enemyTypesSpawned = new Dictionary<string, int>();
+    private float TimeToClearWave = 0;
+    public int goldEarned = 0;
+
+
+    //--------------------------------------------------------------
+
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
+
+        OnWaveStarted += AnaliticsWaveStart;
+        OnWaveEnded += AnaliticsWaveEnd;
     }
 
     private void OnEnable()
@@ -55,6 +71,14 @@ public class WaveManager : MonoBehaviour
     {
         if (UpgradeManager.Instance != null)
             UpgradeManager.Instance.OnUpgradeUnlocked -= HandleUpgradeUnlocked;
+    }
+
+    private void Update()
+    {
+        if (waveStarted)
+        {
+            TimeToClearWave += Time.deltaTime;
+        }
     }
 
     private void HandleUpgradeUnlocked(UpgradeData upgrade)
@@ -76,6 +100,8 @@ public class WaveManager : MonoBehaviour
         if (!waveStarted && currentWave == 0)
         {
             StartNextWave();
+            Enemy.OnAnyEnemyKilled += RecordEnemyKilled;
+            GoldManager.Instance.OnGoldEarned += RecordGoldEarned;
         }
     }
 
@@ -99,7 +125,6 @@ public class WaveManager : MonoBehaviour
         Debug.Log($"[WaveManager] Oleada {currentWave} iniciada con {totalEnemies} enemigos.");
         OnWaveStarted?.Invoke(currentWave, totalEnemies);
         WaveEnemyGeneratorNormal.Instance.Spawn(currentWave, enemiesThisWave);
-
     }
 
     public void NotifyEnemyKilled()
@@ -205,6 +230,71 @@ public class WaveManager : MonoBehaviour
     public void SetEnemyCountMultiplier(float value)
     {
         enemyCountMultiplier = Mathf.Clamp(value, 0.5f, 3f);
+    }
+
+
+
+
+
+    //---------------------ANALITYCS--------------------------------------------------
+
+    private void AnaliticsWaveStart(int waveNumber, int totalEnemies)
+    {
+        enemiesDefeated = 0;
+        if (modifierForThisWave == null)
+        {
+            AnalyticsManager.Instance.RecordWaveInfoStart(waveNumber, totalEnemies);
+        }
+        else
+        {
+            AnalyticsManager.Instance.RecordWaveInfoStart(waveNumber, totalEnemies, modifierForThisWave.Name);
+        }
+        
+    }
+
+    private void AnaliticsWaveEnd()
+    {
+        string mostSpawnedType = GetKeyFromValue(enemyTypesSpawned.Values.Max());
+        AnalyticsManager.Instance.RecordWaveInfoEnd(goldEarned, TimeToClearWave, enemiesDefeated, mostSpawnedType);
+        TimeToClearWave = 0;
+        enemiesDefeated = 0;
+        goldEarned = 0;
+        modifierForThisWave = null;
+    }
+
+    private string GetKeyFromValue(int value)
+    {
+        foreach (KeyValuePair<string, int> entry in enemyTypesSpawned)
+        {
+            if (entry.Value == value)
+            {
+                return entry.Key;
+            }
+        }
+        return null;
+    }
+
+    private void RecordEnemyKilled(Enemy enemy)
+    {
+        enemiesDefeated++;                   
+    }
+
+    public void RecordEnemyTypesSpawned(Enemy enemy)
+    {
+        string type = enemy.Type.ToString();
+        if (enemyTypesSpawned.ContainsKey(type))
+        {
+            enemyTypesSpawned[type] += 1;
+        }
+        else
+        {
+            enemyTypesSpawned.Add(type, 1);
+        }
+    }
+
+    private void RecordGoldEarned(int amount)
+    {
+        goldEarned += amount;
     }
 
 }

@@ -25,11 +25,12 @@ public class Enemy : MonoBehaviour, IDamageDealer
         Health = GetComponent<EnemyHealth>();
         Movement = GetComponent<EnemyMovement>();
         WorldLogic = GetComponent<EnemyWorldLogic>();
-        HealthBar = GetComponent<EnemyHealthBar>();
+        HealthBar = GetComponent<EnemyHealthBar>();        
 
         if (data == null)
             Debug.LogError($"[Enemy] {name} no tiene asignado EnemyData");
     }
+
     private void Update()
     {
         if (Health.IsDead()) return;

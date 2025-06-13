@@ -8,6 +8,8 @@ public class GoldManager : MonoBehaviour
     public int currentGold = 30;
     public TMP_Text goldText;
 
+    public System.Action<int> OnGoldEarned;
+
     void Awake()
     {
         Instance = this;
@@ -19,6 +21,8 @@ public class GoldManager : MonoBehaviour
         currentGold += amount;
         CoreUI.Instance?.UpdateUI(); // actualizar estado del botón
         UpdateGoldUI();
+
+        OnGoldEarned?.Invoke(amount);
     }
 
     public void SpendGold(int amount)
