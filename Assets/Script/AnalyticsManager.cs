@@ -103,4 +103,6 @@ public class AnalyticsManager : MonoBehaviour
         AnalyticsService.Instance.Flush();
         Debug.Log($"Eventos enviados: Tile_Chosen, Cantidad: {tilesChosen.Count}");
     }
+
+
 }

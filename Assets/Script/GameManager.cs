@@ -4,6 +4,8 @@ using UnityEngine.Analytics;
 using System.Collections.Generic;
 using Unity.Services.Analytics;
 
+using System;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -37,5 +39,7 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene("ResultScene");
     }
+
+    
 
 }
