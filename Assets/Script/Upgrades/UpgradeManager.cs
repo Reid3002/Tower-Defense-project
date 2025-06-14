@@ -32,11 +32,45 @@ public class UpgradeManager : MonoBehaviour
 
     public bool IsUnlocked(string upgradeId) => unlockedUpgrades.Contains(upgradeId);
 
-    public bool TryUnlockUpgrade(string upgradeId, int playerXP)
+    public bool TryUnlockUpgrade(string upgradeId)
     {
         var upgrade = allUpgrades.Find(u => u.upgradeId == upgradeId);
         if (upgrade == null || IsUnlocked(upgradeId)) return false;
-        if (playerXP < upgrade.xpCost) return false;
+
+        bool canUnlock = false;
+
+        switch (upgrade.category)
+        {
+            case UpgradeCategory.NormalWorld:
+                canUnlock = PlayerExperienceManager.Instance.GetTotalEssence(WorldState.Normal) >= upgrade.xpCost;
+                break;
+            case UpgradeCategory.OtherWorld:
+                canUnlock = PlayerExperienceManager.Instance.GetTotalEssence(WorldState.OtherWorld) >= upgrade.xpCost;
+                break;
+            case UpgradeCategory.General:
+                int half = Mathf.CeilToInt(upgrade.xpCost / 2f);
+                canUnlock =
+                    PlayerExperienceManager.Instance.GetTotalEssence(WorldState.Normal) >= half &&
+                    PlayerExperienceManager.Instance.GetTotalEssence(WorldState.OtherWorld) >= half;
+                break;
+        }
+
+        if (!canUnlock)
+            return false;
+
+        // Descontar esencia solo si se puede desbloquear
+        switch (upgrade.category)
+        {
+            case UpgradeCategory.NormalWorld:
+                PlayerExperienceManager.Instance.RemoveEssence(WorldState.Normal, upgrade.xpCost);
+                break;
+            case UpgradeCategory.OtherWorld:
+                PlayerExperienceManager.Instance.RemoveEssence(WorldState.OtherWorld, upgrade.xpCost);
+                break;
+            case UpgradeCategory.General:
+                PlayerExperienceManager.Instance.RemoveEssenceBoth(upgrade.xpCost);
+                break;
+        }
 
         unlockedUpgrades.Add(upgradeId);
         SaveUnlockedUpgrades();
@@ -67,6 +101,7 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
+
     // Devuelve true si alguna vez se desbloqueó al menos una mejora.
     public bool HasAnyUpgradeUnlocked() => unlockedUpgrades.Count > 0;
 
@@ -74,7 +109,9 @@ public class UpgradeManager : MonoBehaviour
     [ContextMenu("Reset Upgrades")]
     public void ResetUpgrades()
     {
-        unlockedUpgrades.Clear();
+        PlayerPrefs.DeleteKey("UnlockedUpgrades");
+        PlayerPrefs.Save();
+
         Debug.Log("[UpgradeManager] Todas las mejoras han sido reseteadas.");
         // Si querés también actualizar la UI automáticamente:
         UpgradesPanelUI panel = FindFirstObjectByType<UpgradesPanelUI>();

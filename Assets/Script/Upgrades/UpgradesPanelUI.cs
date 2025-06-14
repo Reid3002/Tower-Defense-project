@@ -63,43 +63,7 @@ public class UpgradesPanelUI : MonoBehaviour
 
     private void OnUnlockUpgrade(string upgradeId)
     {
-        var upgrade = UpgradeManager.Instance.GetUpgrades().FirstOrDefault(u => u.upgradeId == upgradeId);
-        if (upgrade == null) return;
-
-        bool unlocked = false;
-
-        switch (upgrade.category)
-        {
-            case UpgradeCategory.NormalWorld:
-                if (PlayerExperienceManager.Instance.GetTotalEssence(WorldState.Normal) >= upgrade.xpCost)
-                {
-                    unlocked = UpgradeManager.Instance.TryUnlockUpgrade(upgradeId, PlayerExperienceManager.Instance.GetTotalEssence(WorldState.Normal));
-                    if (unlocked)
-                        PlayerExperienceManager.Instance.RemoveEssence(WorldState.Normal, upgrade.xpCost);
-                }
-                break;
-
-            case UpgradeCategory.OtherWorld:
-                if (PlayerExperienceManager.Instance.GetTotalEssence(WorldState.OtherWorld) >= upgrade.xpCost)
-                {
-                    unlocked = UpgradeManager.Instance.TryUnlockUpgrade(upgradeId, PlayerExperienceManager.Instance.GetTotalEssence(WorldState.OtherWorld));
-                    if (unlocked)
-                        PlayerExperienceManager.Instance.RemoveEssence(WorldState.OtherWorld, upgrade.xpCost);
-                }
-                break;
-
-            case UpgradeCategory.General:
-                int half = Mathf.CeilToInt(upgrade.xpCost / 2f);
-                if (PlayerExperienceManager.Instance.GetTotalEssence(WorldState.Normal) >= half &&
-                    PlayerExperienceManager.Instance.GetTotalEssence(WorldState.OtherWorld) >= half)
-                {
-                    unlocked = UpgradeManager.Instance.TryUnlockUpgrade(upgradeId, half); // El valor no importa, solo para lógica interna
-                    if (unlocked)
-                        PlayerExperienceManager.Instance.RemoveEssenceBoth(upgrade.xpCost);
-                }
-                break;
-        }
-
+        bool unlocked = UpgradeManager.Instance.TryUnlockUpgrade(upgradeId);
         if (unlocked)
             RefreshUI();
     }

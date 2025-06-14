@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 1315084135127454567}
   - component: {fileID: -8214969434135342278}
   - component: {fileID: -3305105604737927354}
+  - component: {fileID: -6157404768824688339}
   m_Layer: 0
   m_Name: TurretSlow
   m_TagString: Turret
@@ -406,3 +407,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8983c58441e113845a93c0be25d63a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6157404768824688339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333658948748976991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf0f3c3ac9c37f45a68a56f8cf7cf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUpgradeLevel: 15
+  upgradeSteps:
+  - level: 1
+    damageMultiplier: 2
+    rangeMultiplier: 2
+    fireRateMultiplier: 2
+  - level: 2
+    damageMultiplier: 2
+    rangeMultiplier: 2
+    fireRateMultiplier: 2

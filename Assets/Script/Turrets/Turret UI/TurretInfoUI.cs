@@ -61,6 +61,7 @@ public class TurretInfoUI : MonoBehaviour
 
         dataHolder = turret.GetComponent<TurretDataHolder>();
         stats = turret.GetComponent<TurretStats>();
+        stats.OnStatsChanged += UpdateInfo;
 
         if (dataHolder == null || stats == null)
         {

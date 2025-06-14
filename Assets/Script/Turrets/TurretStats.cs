@@ -13,9 +13,11 @@ public class TurretStats : MonoBehaviour, ITurretStats
     private float baseRange;
     private float baseFireRate;
 
-    private float currentDamage;
-    private float currentRange;
-    private float currentFireRate;
+    [Header("Actual Stats")]
+    [SerializeField] private float currentDamage;
+    [SerializeField] private float currentRange;
+    [SerializeField] private float currentFireRate;
+
 
     public float Damage => currentDamage;
     public float Range => currentRange;
@@ -25,6 +27,8 @@ public class TurretStats : MonoBehaviour, ITurretStats
 
     private IRangeDisplay rangeDisplay;
     private TurretDataHolder dataHolder;
+
+    public event System.Action OnStatsChanged;
 
     void Awake()
     {
@@ -52,7 +56,7 @@ public class TurretStats : MonoBehaviour, ITurretStats
         UpdateRangeVisualizer();
     }
 
-    public void ApplyMultiplier(float multiplier)
+    /*public void ApplyMultiplier(float multiplier)
     {
         baseDamage = Mathf.Round(baseDamage * multiplier);
         baseRange = Mathf.Round(baseRange * multiplier);
@@ -60,11 +64,21 @@ public class TurretStats : MonoBehaviour, ITurretStats
 
         RecalculateStats();
         UpdateRangeVisualizer();
-    }
+    }*/
 
     private void ApplyCorruptionPenalty(CorruptionManager.CorruptionLevel level)
     {
         RecalculateStats(level);
+        UpdateRangeVisualizer();
+    }
+    public void ApplyUpgradeStep(TurretUpgradeStep step)
+    {
+        baseDamage = Mathf.Round(baseDamage * step.damageMultiplier);
+        baseRange = Mathf.Round(baseRange * step.rangeMultiplier);
+        baseFireRate = Mathf.Round(baseFireRate * step.fireRateMultiplier);
+
+        upgradeLevel++;
+        RecalculateStats();
         UpdateRangeVisualizer();
     }
 
@@ -117,6 +131,9 @@ public class TurretStats : MonoBehaviour, ITurretStats
         currentDamage = Mathf.Round(baseDamage * damageMod * corruptionPenalty);
         currentRange = Mathf.Round(baseRange * rangeMod * corruptionPenalty);
         currentFireRate = Mathf.Round(baseFireRate * fireRateMod * corruptionPenalty);
+
+        OnStatsChanged?.Invoke();
+
     }
 
     private void UpdateRangeVisualizer()
