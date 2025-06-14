@@ -45,15 +45,7 @@ public class Enemy : MonoBehaviour, IDamageDealer
         Health.Initialize(data.maxHealth, data.defense);
         Movement.Initialize(path.Reverse().ToArray(), data.moveSpeed);
 
-        // Al inicializar, usará el estado del mundo actual si aún no fue marcado
-        if (data.originWorld == WorldState.Normal || data.originWorld == WorldState.OtherWorld)
-        {
-            SetOriginWorld(data.originWorld);
-        }
-        else
-        {
-            SetOriginWorld(WorldManager.Instance.CurrentWorld);
-        }
+        SetOriginWorld(data.originWorld);
 
         HealthBar?.Initialize(transform, Health.GetMaxHealth());
 
@@ -63,14 +55,7 @@ public class Enemy : MonoBehaviour, IDamageDealer
 
     public void SetOriginWorld(WorldState state)
     {
-        // Guardar el estado en EnemyData si es runtime
-        data.originWorld = state;
-
-        // Aplicar lógica visual
         WorldLogic?.SetOriginWorld(state);
-        WorldLogic?.UpdateVisibility();
-
-
     }
 
     public void OnSuccessfulHit()

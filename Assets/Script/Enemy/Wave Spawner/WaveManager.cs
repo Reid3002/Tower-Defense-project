@@ -98,7 +98,6 @@ public class WaveManager : MonoBehaviour
 
         Debug.Log($"[WaveManager] Oleada {currentWave} iniciada con {totalEnemies} enemigos.");
         OnWaveStarted?.Invoke(currentWave, totalEnemies);
-        WaveEnemyGeneratorNormal.Instance.Spawn(currentWave, enemiesThisWave);
 
     }
 
@@ -192,16 +191,6 @@ public class WaveManager : MonoBehaviour
         Debug.Log($"[WaveManager] Total enemigos esta oleada: {total} (receta ScriptableObject, multiplicador: {enemyCountMultiplier})");
         return total;
     }
-    /*public void RegisterEnemyManually()
-    {
-        enemiesAlive++;
-        enemiesThisWave++;
-        WaveUIController.Instance?.UpdateEnemiesRemaining(enemiesAlive);
-
-        Debug.Log($"[WaveManager] Enemigo adicional registrado manualmente. Enemigos vivos: {enemiesAlive}");
-    }*/
-
-    // Permite modificar el multiplicador en runtime si querés (opcional)
     public void SetEnemyCountMultiplier(float value)
     {
         enemyCountMultiplier = Mathf.Clamp(value, 0.5f, 3f);

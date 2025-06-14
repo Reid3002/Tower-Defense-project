@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveEnemyGeneratorNormal : WaveEnemyGeneratorBase
+public class WaveEnemyGeneratorOther : WaveEnemyGeneratorBase
 {
-    public static WaveEnemyGeneratorNormal Instance;
+    public static WaveEnemyGeneratorOther Instance;
     private float EnemyCountMultiplier => WaveManager.Instance != null ? WaveManager.Instance.EnemyCountMultiplier : 1f;
 
-    protected override WorldState TargetWorld => WorldState.Normal;
+    protected override WorldState TargetWorld => WorldState.OtherWorld;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
     }
+
     public new void Spawn(int waveNumber, int _)
     {
         Debug.Log($"[{GetType().Name}] Spawn llamado - Wave: {waveNumber} - Total a spawnear: {_}");
@@ -66,5 +67,4 @@ public class WaveEnemyGeneratorNormal : WaveEnemyGeneratorBase
 
         Debug.Log($"[{GetType().Name}] Oleada {waveNumber} - {TargetWorld} - Generados: {totalSpawned} enemigos.");
     }
-
 }

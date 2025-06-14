@@ -19,7 +19,7 @@ public class SelectableTile : MonoBehaviour
         }
         else
         {
-            UIManager.Instance.ClearPreview();
+            //UIManager.Instance.ClearPreview();
             isSelected = false;
         }
     }

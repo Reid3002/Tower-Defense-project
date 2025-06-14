@@ -1153,10 +1153,8 @@ MonoBehaviour:
     tileName: 
     tileSize: {x: 0, y: 0}
     pathOffsets: []
-  tileVisualPrefab: {fileID: 4055742722229311725, guid: 2bc8d12ad40c44e4c8549dab4eaf5ad2, type: 3}
   tilePreviewButtonPrefab: {fileID: 359464916691016005, guid: 2ba8896a5646d1d4591aea45951468fb, type: 3}
   tilePreviewButtonParent: {fileID: 1725489540}
-  previewWorldPosition: {x: 30, y: 0, z: 0}
 --- !u!114 &234000449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4091,7 +4089,7 @@ GameObject:
   - component: {fileID: 1012604527}
   - component: {fileID: 1012604526}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Tittle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6334,6 +6332,7 @@ GameObject:
   - component: {fileID: 1721625335}
   - component: {fileID: 1721625338}
   - component: {fileID: 1721625337}
+  - component: {fileID: 1721625339}
   m_Layer: 0
   m_Name: Wave Generator Manager
   m_TagString: Untagged
@@ -6384,6 +6383,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalGenerator: {fileID: 1721625337}
+  otherWorldGenerator: {fileID: 1721625339}
+--- !u!114 &1721625339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721625334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e2cc62524bf5b479cfc35e0f0e5227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySpawner: {fileID: 775839250}
+  gridManager: {fileID: 412535789}
+  spawnDelay: 0.7
 --- !u!1 &1725489539
 GameObject:
   m_ObjectHideFlags: 0
@@ -8023,10 +8038,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1012604525}
   - {fileID: 490466761}
   - {fileID: 1252330116}
   - {fileID: 1805658334}
-  - {fileID: 1012604525}
   m_Father: {fileID: 1988634034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
