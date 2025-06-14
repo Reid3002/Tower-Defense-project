@@ -1398,8 +1398,9 @@ MonoBehaviour:
   essencePerMiniBoss: 50
   essencePerNoDamageWave: 50
   essencePerEnemyKill: 2
-  testNormalEssenceAmount: 500
-  testOtherWorldEssenceAmount: 500
+  addNormalEssence: 0
+  addOtherWorldEssence: 0
+  addEssenceNow: 0
 --- !u!1 &320826780
 GameObject:
   m_ObjectHideFlags: 0

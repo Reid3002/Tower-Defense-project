@@ -267,6 +267,9 @@ MonoBehaviour:
   damage: 0
   upgradeLevel: 1
   maxUpgradeLevel: 15
+  currentDamage: 0
+  currentRange: 0
+  currentFireRate: 0
 --- !u!114 &251217148160448124
 MonoBehaviour:
   m_ObjectHideFlags: 0
