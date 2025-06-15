@@ -48,24 +48,13 @@ public class TurretStats : MonoBehaviour, ITurretStats
     {
         float mod = Application.isPlaying ? GameModifiersManager.Instance.turretDamageMultiplier : 1f;
 
-        baseDamage = Mathf.Round(data.damage * mod);
-        baseRange = Mathf.Round(data.range);
-        baseFireRate = Mathf.Round(data.fireRate);
+        baseDamage = Mathf.Round(data.damage * mod * 10f) / 10f;
+        baseRange = Mathf.Round(data.range * 10f) / 10f;
+        baseFireRate = Mathf.Round(data.fireRate * 10f) / 10f;
 
         RecalculateStats();
         UpdateRangeVisualizer();
     }
-
-    /*public void ApplyMultiplier(float multiplier)
-    {
-        baseDamage = Mathf.Round(baseDamage * multiplier);
-        baseRange = Mathf.Round(baseRange * multiplier);
-        baseFireRate = Mathf.Round(baseFireRate * multiplier);
-
-        RecalculateStats();
-        UpdateRangeVisualizer();
-    }*/
-
     private void ApplyCorruptionPenalty(CorruptionManager.CorruptionLevel level)
     {
         RecalculateStats(level);
@@ -73,9 +62,9 @@ public class TurretStats : MonoBehaviour, ITurretStats
     }
     public void ApplyUpgradeStep(TurretUpgradeStep step)
     {
-        baseDamage = Mathf.Round(baseDamage * step.damageMultiplier);
-        baseRange = Mathf.Round(baseRange * step.rangeMultiplier);
-        baseFireRate = Mathf.Round(baseFireRate * step.fireRateMultiplier);
+        baseDamage = Mathf.Round(baseDamage * step.damageMultiplier * 10f) / 10f;
+        baseRange = Mathf.Round(baseRange * step.rangeMultiplier * 10f) / 10f;
+        baseFireRate = Mathf.Round(baseFireRate * step.fireRateMultiplier * 10f) / 10f;
 
         upgradeLevel++;
         RecalculateStats();
@@ -84,9 +73,6 @@ public class TurretStats : MonoBehaviour, ITurretStats
 
     public void RecalculateStats(CorruptionManager.CorruptionLevel level = CorruptionManager.CorruptionLevel.None)
     {
-        float corruptionPenalty = (level == CorruptionManager.CorruptionLevel.Level1 ||
-                                   level == CorruptionManager.CorruptionLevel.Level3) ? 0.9f : 1f;
-
         float rangeMod = 1f;
         float fireRateMod = 1f;
         float damageMod = 1f;
@@ -128,12 +114,16 @@ public class TurretStats : MonoBehaviour, ITurretStats
             damageMod *= GameModifiersManager.Instance.turretDamageMultiplier;
         }
 
-        currentDamage = Mathf.Round(baseDamage * damageMod * corruptionPenalty);
-        currentRange = Mathf.Round(baseRange * rangeMod * corruptionPenalty);
-        currentFireRate = Mathf.Round(baseFireRate * fireRateMod * corruptionPenalty);
+        // aplicar el penalizador SOLO al daño, usando el multiplicador centralizado ---
+        float corruptionMultiplier = 1f;
+        if (CorruptionManager.Instance != null)
+            corruptionMultiplier = CorruptionManager.Instance.GetTurretDamageMultiplier();
+
+        currentDamage = Mathf.Round(baseDamage * damageMod * corruptionMultiplier * 10f) / 10f;
+        currentRange = Mathf.Round(baseRange * rangeMod * 10f) / 10f;
+        currentFireRate = Mathf.Round(baseFireRate * fireRateMod * 10f) / 10f;
 
         OnStatsChanged?.Invoke();
-
     }
 
     private void UpdateRangeVisualizer()

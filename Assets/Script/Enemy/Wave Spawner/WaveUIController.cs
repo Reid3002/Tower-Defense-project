@@ -5,7 +5,7 @@ public class WaveUIController : MonoBehaviour
 {
     public static WaveUIController Instance { get; private set; }
 
-    [Header("Referencias UI")]
+    [Header("References UI")]
     [SerializeField] private TMP_Text waveCounterText;
     [SerializeField] private TMP_Text enemiesRemainingText;
 
@@ -50,7 +50,7 @@ public class WaveUIController : MonoBehaviour
     public void UpdateWaveUI(int waveNumber, int _)
     {
         if (waveCounterText != null)
-            waveCounterText.text = $"Oleada: {waveNumber}";
+            waveCounterText.text = $"Wave: {waveNumber}";
 
         int totalEnemiesThisWave = GetTotalEnemiesForWave(waveNumber);
         UpdateEnemiesRemaining(totalEnemiesThisWave);
@@ -92,7 +92,7 @@ public class WaveUIController : MonoBehaviour
             }
         }
 
-        enemiesRemainingText.text = $"Total: {remaining} / {total}";
+        enemiesRemainingText.text = $"{remaining}/{total}";
     }
 
 

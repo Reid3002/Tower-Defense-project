@@ -38,22 +38,34 @@ public class WaveEnemyGeneratorManager : MonoBehaviour
 
         Debug.Log($"[WaveEnemyGeneratorManager] OnWaveStarted llamada - Mundo: {(inOtherWorld ? "OtherWorld" : "NormalWorld")}, Wave: {waveNumber}, Total: {totalEnemiesThisWave}");
 
-        // Si tenés penalizaciones, podés sumar enemigos acá (opcional)
+        // Enemigos base
         int finalEnemiesToSpawn = totalEnemiesThisWave;
 
-        // Ejemplo de penalidad (si querés modificar el total):
-        if (waveNumber % 5 == 0) finalEnemiesToSpawn++;
-        if (waveNumber % 15 == 0) finalEnemiesToSpawn++;
+        // (Podés mantener tus bonificaciones por jefes u oleadas especiales acá si querés)
+        // if (waveNumber % 5 == 0) finalEnemiesToSpawn++;
+        // if (waveNumber % 15 == 0) finalEnemiesToSpawn++;
 
-        // Penalidad por corrupción (opcional)
+        // Penalidad por corrupción
         var corruptionLevel = CorruptionManager.Instance.CurrentLevel;
-        if (corruptionLevel == CorruptionManager.CorruptionLevel.Level2 ||
-            corruptionLevel == CorruptionManager.CorruptionLevel.Level3)
+        float corruptionMultiplier = 1f;
+
+        switch (corruptionLevel)
         {
-            int extraEnemies = Mathf.FloorToInt(totalEnemiesThisWave * 0.25f); // +25% enemigos
-            finalEnemiesToSpawn += extraEnemies;
-            Debug.Log($"[WaveEnemyGeneratorManager] Penalidad por corrupción activa. Enemigos extra: {extraEnemies}");
+            case CorruptionManager.CorruptionLevel.Level1:
+                corruptionMultiplier = 1.05f; // +5%
+                break;
+            case CorruptionManager.CorruptionLevel.Level3:
+                corruptionMultiplier = 1.15f; // +15%
+                break;
+            default:
+                corruptionMultiplier = 1f; // sin extra
+                break;
         }
+
+        finalEnemiesToSpawn = Mathf.RoundToInt(finalEnemiesToSpawn * corruptionMultiplier);
+
+        if (corruptionLevel == CorruptionManager.CorruptionLevel.Level1 || corruptionLevel == CorruptionManager.CorruptionLevel.Level3)
+            Debug.Log($"[WaveEnemyGeneratorManager] Penalidad por corrupción: x{corruptionMultiplier} enemigos ({finalEnemiesToSpawn})");
 
         // Genera los enemigos en el generador correspondiente
         if (inOtherWorld)
@@ -71,5 +83,6 @@ public class WaveEnemyGeneratorManager : MonoBehaviour
                 Debug.LogError("[WaveEnemyGeneratorManager] Referencia a NormalGenerator faltante.");
         }
     }
+
 
 }

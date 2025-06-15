@@ -99,6 +99,11 @@ public class WaveManager : MonoBehaviour
         Debug.Log($"[WaveManager] Oleada {currentWave} iniciada con {totalEnemies} enemigos.");
         OnWaveStarted?.Invoke(currentWave, totalEnemies);
 
+        if (CorruptionManager.Instance.CoreLosesLifePerWave())
+        {
+            Core.Instance.TakeDamage(1);
+        }
+
     }
 
     public void NotifyEnemyKilled()

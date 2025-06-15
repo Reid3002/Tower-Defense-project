@@ -116,4 +116,37 @@ public class CorruptionManager : MonoBehaviour
     {
         return currentCorruption / maxCorruption;
     }
+    public string GetPenaltyDescription()
+    {
+        switch (CurrentLevel)
+        {
+            case CorruptionLevel.None:
+                return "";
+            case CorruptionLevel.Level1:
+                return "Spawn 5% more enemies";
+            case CorruptionLevel.Level2:
+                return "All turrets deals 15% less damage";
+            case CorruptionLevel.Level3:
+                return "Spawn 15% more enemies, turrets deals 30% less damage and lose 1 hp every wave";
+            default:
+                return "";
+        }
+    }
+    // Devuelve el multiplicador de daño de torretas según corrupción
+    public float GetTurretDamageMultiplier()
+    {
+        switch (CurrentLevel)
+        {
+            case CorruptionLevel.Level1: return 1.0f;
+            case CorruptionLevel.Level2: return 0.85f;
+            case CorruptionLevel.Level3: return 0.70f;
+            default: return 1.0f;
+        }
+    }
+
+    // Devuelve si en el nivel actual el core pierde vida por oleada
+    public bool CoreLosesLifePerWave()
+    {
+        return CurrentLevel == CorruptionLevel.Level3;
+    }
 }

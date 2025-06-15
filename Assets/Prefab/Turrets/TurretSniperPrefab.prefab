@@ -316,7 +316,7 @@ MonoBehaviour:
   maxUpgradeLevel: 15
   currentDamage: 25
   currentRange: 7
-  currentFireRate: 2
+  currentFireRate: 1.5
 --- !u!114 &4599961383548608693
 MonoBehaviour:
   m_ObjectHideFlags: 0
