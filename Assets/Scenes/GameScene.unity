@@ -3644,7 +3644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minionEnemyPrefab: {fileID: 5019013483156572802, guid: 3886f9b1e5167534cb2b705ebb6935d6, type: 3}
   sprintEnemyPrefab: {fileID: 5019013483156572802, guid: 678800d79bc228a4d95e427c9245fa04, type: 3}
-  bigEnemyPrefab: {fileID: 5019013483156572802, guid: 6900e95feda5f1542940cf9e4519e655, type: 3}
+  bigEnemyPrefab: {fileID: 5019013483156572802, guid: c8c5ab4caf864f141ba5ee3f4f967949, type: 3}
   miniBossPrefab: {fileID: 5019013483156572802, guid: 066f856d370124e4eb2c3da597d61f14, type: 3}
   bossPrefab: {fileID: 5019013483156572802, guid: 6900e95feda5f1542940cf9e4519e655, type: 3}
   superMinionPrefab: {fileID: 5019013483156572802, guid: 05214fe31257a6a4f8c1cc9bd863e082, type: 3}
