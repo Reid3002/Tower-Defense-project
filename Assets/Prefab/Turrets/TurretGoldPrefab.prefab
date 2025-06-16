@@ -321,8 +321,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretRenderer: {fileID: 1890560010008340660}
-  boostedColor: {r: 0, g: 1, b: 1, a: 1}
-  normalColor: {r: 0, g: 0, b: 0, a: 1}
+  boostedColor: {r: 0, g: 0.5188679, b: 0.5188679, a: 1}
+  normalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1443576625320897305
 MonoBehaviour:
   m_ObjectHideFlags: 0

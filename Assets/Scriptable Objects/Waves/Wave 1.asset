@@ -15,7 +15,7 @@ MonoBehaviour:
   waveRecipes:
   - waveNumber: 1
     steps:
-    - enemyType: 2
+    - enemyType: 3
       count: 10
       interval: 2
       waitAfterStep: 0
