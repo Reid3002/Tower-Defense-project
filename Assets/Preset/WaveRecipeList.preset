@@ -6,7 +6,7 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CurrentWaves
+  m_Name: WaveRecipeList
   m_TargetType:
     m_NativeTypeID: 114
     m_ManagedTypePPtr: {fileID: 11500000, guid: a0e41850b0d3091439679d6731b124fe, type: 3}
@@ -26,7 +26,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.size
-    value: 25
+    value: 45
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[0].waveNumber
@@ -974,7 +974,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[12].waveNumber
-    value: 12
+    value: 13
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[12].steps.Array.size
@@ -1042,7 +1042,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.size
-    value: 6
+    value: 7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[0].enemyType
@@ -1050,7 +1050,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[0].count
-    value: 4
+    value: 6
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[0].interval
@@ -1066,7 +1066,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[1].count
-    value: 7
+    value: 12
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[1].interval
@@ -1082,7 +1082,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[2].count
-    value: 4
+    value: 7
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[2].interval
@@ -1094,31 +1094,31 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[3].enemyType
-    value: 2
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[3].count
-    value: 4
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[3].interval
-    value: 0.5
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: waveRecipes.Array.data[14].steps.Array.data[3].waitAfterStep
-    value: 0.5
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: waveRecipes.Array.data[14].steps.Array.data[4].enemyType
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[14].steps.Array.data[3].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[14].steps.Array.data[4].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[4].count
-    value: 7
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[4].interval
-    value: 0.7
+    value: 0.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[4].waitAfterStep
@@ -1126,11 +1126,11 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[5].enemyType
-    value: 1
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[5].count
-    value: 4
+    value: 6
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[5].interval
@@ -1138,6 +1138,22 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[14].steps.Array.data[5].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[14].steps.Array.data[6].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[14].steps.Array.data[6].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[14].steps.Array.data[6].interval
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[14].steps.Array.data[6].waitAfterStep
     value: 0.5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
@@ -2786,7 +2802,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[24].steps.Array.size
-    value: 3
+    value: 5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[24].steps.Array.data[0].enemyType
@@ -2806,19 +2822,19 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[24].steps.Array.data[1].enemyType
-    value: 0
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[24].steps.Array.data[1].count
-    value: 31
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[24].steps.Array.data[1].interval
-    value: 0.1
+    value: 0.2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[24].steps.Array.data[1].waitAfterStep
-    value: 3
+    value: 0.4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[24].steps.Array.data[2].enemyType
@@ -2835,6 +2851,2358 @@ Preset:
   - target: {fileID: 0}
     propertyPath: waveRecipes.Array.data[24].steps.Array.data[2].waitAfterStep
     value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[24].steps.Array.data[3].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[24].steps.Array.data[3].count
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[24].steps.Array.data[3].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[24].steps.Array.data[3].waitAfterStep
+    value: 0.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[24].steps.Array.data[4].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[24].steps.Array.data[4].count
+    value: 31
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[24].steps.Array.data[4].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[24].steps.Array.data[4].waitAfterStep
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].waveNumber
+    value: 26
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.size
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[0].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[0].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[0].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[0].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[1].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[1].count
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[1].interval
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[1].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[2].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[2].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[2].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[2].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[3].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[3].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[3].interval
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[3].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[4].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[4].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[4].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[25].steps.Array.data[4].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].waveNumber
+    value: 27
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[0].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[0].count
+    value: 25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[0].interval
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[0].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[1].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[1].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[1].interval
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[1].waitAfterStep
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[2].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[2].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[2].interval
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[26].steps.Array.data[2].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].waveNumber
+    value: 28
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[0].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[0].count
+    value: 11
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[0].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[0].waitAfterStep
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[1].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[1].count
+    value: 16
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[1].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[1].waitAfterStep
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[2].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[2].count
+    value: 26
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[2].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[27].steps.Array.data[2].waitAfterStep
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].waveNumber
+    value: 29
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.size
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[0].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[0].count
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[0].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[0].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[1].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[1].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[1].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[1].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[2].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[2].count
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[2].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[2].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[3].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[3].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[3].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[3].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[4].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[4].count
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[4].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[4].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[5].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[5].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[5].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[28].steps.Array.data[5].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].waveNumber
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.size
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[0].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[0].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[0].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[0].waitAfterStep
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[1].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[1].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[1].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[1].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[2].enemyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[2].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[2].interval
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[2].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[3].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[3].count
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[3].interval
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[3].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[4].enemyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[4].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[4].interval
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[4].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[5].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[5].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[5].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[5].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[6].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[6].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[6].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[29].steps.Array.data[6].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].waveNumber
+    value: 31
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[0].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[0].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[0].interval
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[0].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[1].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[1].count
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[1].interval
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[1].waitAfterStep
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[2].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[2].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[2].interval
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[30].steps.Array.data[2].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].waveNumber
+    value: 32
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.size
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[0].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[0].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[0].interval
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[0].waitAfterStep
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[1].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[1].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[1].interval
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[1].waitAfterStep
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[2].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[2].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[2].interval
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[2].waitAfterStep
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[3].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[3].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[3].interval
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[3].waitAfterStep
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[4].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[4].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[4].interval
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[31].steps.Array.data[4].waitAfterStep
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].waveNumber
+    value: 33
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.size
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[0].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[0].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[0].interval
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[0].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[1].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[1].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[1].interval
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[1].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[2].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[2].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[2].interval
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[2].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[3].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[3].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[3].interval
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[3].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[4].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[4].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[4].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[4].waitAfterStep
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[5].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[5].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[5].interval
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[5].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[6].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[6].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[6].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[6].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[7].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[7].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[7].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[7].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[8].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[8].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[8].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[32].steps.Array.data[8].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].waveNumber
+    value: 34
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.size
+    value: 14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[0].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[0].count
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[0].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[0].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[1].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[1].count
+    value: 14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[1].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[1].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[2].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[2].count
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[2].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[2].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[3].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[3].count
+    value: 14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[3].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[3].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[4].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[4].count
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[4].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[4].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[5].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[5].count
+    value: 14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[5].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[5].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[6].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[6].count
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[6].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[6].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[7].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[7].count
+    value: 14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[7].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[7].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[8].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[8].count
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[8].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[8].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[9].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[9].count
+    value: 14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[9].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[9].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[10].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[10].count
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[10].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[10].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[11].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[11].count
+    value: 14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[11].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[11].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[12].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[12].count
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[12].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[12].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[13].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[13].count
+    value: 14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[13].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[33].steps.Array.data[13].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].waveNumber
+    value: 35
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.size
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[0].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[0].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[0].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[0].waitAfterStep
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[1].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[1].count
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[1].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[1].waitAfterStep
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[2].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[2].count
+    value: 25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[2].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[2].waitAfterStep
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[3].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[3].count
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[3].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[3].waitAfterStep
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[4].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[4].count
+    value: 25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[4].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[34].steps.Array.data[4].waitAfterStep
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].waveNumber
+    value: 36
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[0].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[0].count
+    value: 40
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[0].interval
+    value: 0.6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[0].waitAfterStep
+    value: 0.6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[1].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[1].count
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[1].interval
+    value: 0.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[1].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[2].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[2].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[2].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[35].steps.Array.data[2].waitAfterStep
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[36].waveNumber
+    value: 37
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[36].steps.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[36].steps.Array.data[0].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[36].steps.Array.data[0].count
+    value: 40
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[36].steps.Array.data[0].interval
+    value: 0.6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[36].steps.Array.data[0].waitAfterStep
+    value: 0.6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].waveNumber
+    value: 38
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.size
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[0].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[0].count
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[0].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[0].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[1].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[1].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[1].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[1].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[2].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[2].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[2].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[2].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[3].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[3].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[3].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[3].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[4].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[4].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[4].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[4].waitAfterStep
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[5].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[5].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[5].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[5].waitAfterStep
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[6].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[6].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[6].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[37].steps.Array.data[6].waitAfterStep
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].waveNumber
+    value: 39
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.size
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[0].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[0].count
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[0].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[0].waitAfterStep
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[1].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[1].count
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[1].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[1].waitAfterStep
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[2].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[2].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[2].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[2].waitAfterStep
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[3].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[3].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[3].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[3].waitAfterStep
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[4].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[4].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[4].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[4].waitAfterStep
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[5].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[5].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[5].interval
+    value: 0.3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[38].steps.Array.data[5].waitAfterStep
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].waveNumber
+    value: 40
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.size
+    value: 22
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[0].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[0].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[0].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[0].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[1].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[1].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[1].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[1].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[2].enemyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[2].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[2].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[2].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[3].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[3].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[3].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[3].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[4].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[4].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[4].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[4].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[5].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[5].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[5].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[5].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[6].enemyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[6].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[6].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[6].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[7].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[7].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[7].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[7].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[8].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[8].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[8].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[8].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[9].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[9].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[9].interval
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[9].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[10].enemyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[10].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[10].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[10].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[11].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[11].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[11].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[11].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[12].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[12].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[12].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[12].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[13].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[13].count
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[13].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[13].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[14].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[14].count
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[14].interval
+    value: 0.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[14].waitAfterStep
+    value: 0.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[15].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[15].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[15].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[15].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[16].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[16].count
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[16].interval
+    value: 0.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[16].waitAfterStep
+    value: 0.4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[17].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[17].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[17].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[17].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[18].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[18].count
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[18].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[18].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[19].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[19].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[19].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[19].waitAfterStep
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[20].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[20].count
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[20].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[20].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[21].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[21].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[21].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[39].steps.Array.data[21].waitAfterStep
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].waveNumber
+    value: 41
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.size
+    value: 14
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[0].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[0].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[0].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[0].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[1].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[1].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[1].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[1].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[2].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[2].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[2].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[2].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[3].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[3].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[3].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[3].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[4].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[4].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[4].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[4].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[5].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[5].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[5].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[5].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[6].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[6].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[6].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[6].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[7].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[7].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[7].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[7].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[8].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[8].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[8].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[8].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[9].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[9].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[9].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[9].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[10].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[10].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[10].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[10].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[11].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[11].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[11].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[11].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[12].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[12].count
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[12].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[12].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[13].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[13].count
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[13].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[40].steps.Array.data[13].waitAfterStep
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].waveNumber
+    value: 42
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[0].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[0].count
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[0].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[0].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[1].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[1].count
+    value: 35
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[1].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[1].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[2].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[2].count
+    value: 40
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[2].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[41].steps.Array.data[2].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].waveNumber
+    value: 43
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.size
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[0].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[0].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[0].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[0].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[1].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[1].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[1].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[1].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[2].enemyType
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[2].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[2].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[2].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[3].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[3].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[3].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[3].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[4].enemyType
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[4].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[4].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[4].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[5].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[5].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[5].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[5].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[6].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[6].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[6].interval
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[42].steps.Array.data[6].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].waveNumber
+    value: 44
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[0].enemyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[0].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[0].interval
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[0].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[1].enemyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[1].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[1].interval
+    value: 0.7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[1].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[2].enemyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[2].count
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[2].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[43].steps.Array.data[2].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].waveNumber
+    value: 45
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.size
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[0].enemyType
+    value: 7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[0].count
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[0].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[0].waitAfterStep
+    value: 0.1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[1].enemyType
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[1].count
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[1].interval
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[1].waitAfterStep
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[2].enemyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[2].count
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[2].interval
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[2].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[3].enemyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[3].count
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[3].interval
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[3].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[4].enemyType
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[4].count
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[4].interval
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[4].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[5].enemyType
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[5].count
+    value: 50
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[5].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[5].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[6].enemyType
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[6].count
+    value: 25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[6].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[6].waitAfterStep
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[7].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[7].count
+    value: 40
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[7].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[7].waitAfterStep
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[8].enemyType
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[8].count
+    value: 50
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[8].interval
+    value: 0.2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: waveRecipes.Array.data[44].steps.Array.data[8].waitAfterStep
+    value: 2
     objectReference: {fileID: 0}
   m_ExcludedProperties: []
   m_CoupledType:

@@ -104,7 +104,7 @@ public class TurretInfoUI : MonoBehaviour
         if (turretData.type == "support")
         {
             int totalGoldPerWave = turretData.goldPerWave * stats.UpgradeLevel;
-            damageText.text = $"{totalGoldPerWave} oro por oleada";
+            damageText.text = $"{totalGoldPerWave} Gold per wave";
             rangeText.text = "-";
             fireRateText.text = "-";
             changeTargetModeButton.gameObject.SetActive(false);
@@ -120,11 +120,11 @@ public class TurretInfoUI : MonoBehaviour
         }
 
 
-        sellButtonText.text = $"Vender ({economyManager.CalculateSellValue(stats, dataHolder)} oro)";
+        sellButtonText.text = $"Sell ({economyManager.CalculateSellValue(stats, dataHolder)} Gold)";
 
         if (!canUpgrade)
         {
-            upgradeButtonText.text = "Nivel máximo alcanzado";
+            upgradeButtonText.text = "Upgrade core to more lvl";
             upgradeButton.interactable = false;
         }
         else
@@ -170,13 +170,13 @@ public class TurretInfoUI : MonoBehaviour
         switch (mode)
         {
             case TurretTargeting.TargetingMode.Closest:
-                changeTargetModeButtonText.text = "Ataca al más Cercano"; break;
+                changeTargetModeButtonText.text = "Close Enemy"; break;
             case TurretTargeting.TargetingMode.Farthest:
-                changeTargetModeButtonText.text = "Ataca al más Lejano"; break;
+                changeTargetModeButtonText.text = "Far Enemy"; break;
             case TurretTargeting.TargetingMode.HighestHealth:
-                changeTargetModeButtonText.text = "Ataca al de más Vida"; break;
+                changeTargetModeButtonText.text = "More health"; break;
             case TurretTargeting.TargetingMode.LowestHealth:
-                changeTargetModeButtonText.text = "Ataca al de menos Vida"; break;
+                changeTargetModeButtonText.text = "Less Health"; break;
         }
     }
 

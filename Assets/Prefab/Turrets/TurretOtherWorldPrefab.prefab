@@ -312,8 +312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 4
-  fireRate: 1
-  damage: 10
+  fireRate: 0.7
+  damage: 15
   upgradeLevel: 1
   maxUpgradeLevel: 15
   currentDamage: 10
@@ -427,13 +427,65 @@ MonoBehaviour:
   maxUpgradeLevel: 15
   upgradeSteps:
   - level: 1
-    damageMultiplier: 2
-    rangeMultiplier: 2
-    fireRateMultiplier: 2
+    damageMultiplier: 1
+    rangeMultiplier: 1
+    fireRateMultiplier: 1
   - level: 2
-    damageMultiplier: 2
-    rangeMultiplier: 2
-    fireRateMultiplier: 2
+    damageMultiplier: 1.07
+    rangeMultiplier: 1.1
+    fireRateMultiplier: 1.15
+  - level: 3
+    damageMultiplier: 1.07
+    rangeMultiplier: 1.1
+    fireRateMultiplier: 1.15
+  - level: 4
+    damageMultiplier: 1.06
+    rangeMultiplier: 1.1
+    fireRateMultiplier: 1.15
+  - level: 5
+    damageMultiplier: 1.05
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.15
+  - level: 6
+    damageMultiplier: 1.05
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.15
+  - level: 7
+    damageMultiplier: 1.04
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.1
+  - level: 8
+    damageMultiplier: 1.04
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.1
+  - level: 9
+    damageMultiplier: 1.03
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.05
+  - level: 10
+    damageMultiplier: 1.03
+    rangeMultiplier: 1.05
+    fireRateMultiplier: 1.05
+  - level: 11
+    damageMultiplier: 1.02
+    rangeMultiplier: 1.05
+    fireRateMultiplier: 1.05
+  - level: 12
+    damageMultiplier: 1.02
+    rangeMultiplier: 1.05
+    fireRateMultiplier: 1.05
+  - level: 13
+    damageMultiplier: 1.02
+    rangeMultiplier: 1.05
+    fireRateMultiplier: 1.05
+  - level: 14
+    damageMultiplier: 1.01
+    rangeMultiplier: 1.05
+    fireRateMultiplier: 1.05
+  - level: 15
+    damageMultiplier: 1.02
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.07
 --- !u!1001 &5491899333310060016
 PrefabInstance:
   m_ObjectHideFlags: 0
