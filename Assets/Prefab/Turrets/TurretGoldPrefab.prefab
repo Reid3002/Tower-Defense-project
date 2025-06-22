@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 9104907854425165019}
   - component: {fileID: -1018188368304841192}
   - component: {fileID: 1443576625320897305}
+  - component: {fileID: -7305703761967118270}
   m_Layer: 0
   m_Name: TurretGoldPrefab
   m_TagString: Turret
@@ -266,6 +267,9 @@ MonoBehaviour:
   damage: 0
   upgradeLevel: 1
   maxUpgradeLevel: 15
+  currentDamage: 0
+  currentRange: 0
+  currentFireRate: 0
 --- !u!114 &251217148160448124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,8 +321,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretRenderer: {fileID: 1890560010008340660}
-  boostedColor: {r: 0, g: 1, b: 1, a: 1}
-  normalColor: {r: 0, g: 0, b: 0, a: 1}
+  boostedColor: {r: 0, g: 0.5188679, b: 0.5188679, a: 1}
+  normalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1443576625320897305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,3 +335,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8983c58441e113845a93c0be25d63a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7305703761967118270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333658948748976991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf0f3c3ac9c37f45a68a56f8cf7cf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUpgradeLevel: 15
+  upgradeSteps:
+  - level: 1
+    damageMultiplier: 2
+    rangeMultiplier: 2
+    fireRateMultiplier: 2
+  - level: 2
+    damageMultiplier: 2
+    rangeMultiplier: 2
+    fireRateMultiplier: 2

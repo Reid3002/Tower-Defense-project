@@ -15,6 +15,8 @@ public class WaveEnemyGeneratorNormal : WaveEnemyGeneratorBase
     }
     public new void Spawn(int waveNumber, int _)
     {
+        Debug.Log($"[{GetType().Name}] Spawn llamado - Wave: {waveNumber} - Total a spawnear: {_}");
+
         if (WorldManager.Instance.CurrentWorld != TargetWorld) return;
         StartCoroutine(SpawnEnemies(waveNumber));
     }

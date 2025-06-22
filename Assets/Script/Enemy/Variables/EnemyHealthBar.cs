@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class EnemyHealthBar : MonoBehaviour, IHealthDisplay
 {
     [SerializeField] private GameObject healthBarPrefab;
+    [SerializeField] private float healthBarHeight = 1.5f;
 
     private GameObject healthBarInstance;
     private Image healthBarFill;
@@ -20,13 +21,13 @@ public class EnemyHealthBar : MonoBehaviour, IHealthDisplay
         // Si ya hay barra, no la instancies de nuevo, solo reusala y ponela arriba del enemigo
         if (healthBarInstance == null)
         {
-            healthBarInstance = Instantiate(healthBarPrefab, parent.position + Vector3.up * 1.5f, Quaternion.identity, parent);
+            healthBarInstance = Instantiate(healthBarPrefab, parent.position + Vector3.up * healthBarHeight, Quaternion.identity, parent);
             healthBarFill = healthBarInstance.transform.Find("Background/Filled").GetComponent<Image>();
         }
         else
         {
             healthBarInstance.transform.SetParent(parent);
-            healthBarInstance.transform.position = parent.position + Vector3.up * 1.5f;
+            healthBarInstance.transform.position = parent.position + Vector3.up * healthBarHeight;
             healthBarInstance.SetActive(true); // Reactivá si venís de un pool
             // Si la referencia al fill se perdió, buscala de nuevo
             if (healthBarFill == null)

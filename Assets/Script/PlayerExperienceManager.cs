@@ -77,6 +77,21 @@ public class PlayerExperienceManager : MonoBehaviour
                 timePlayed -= 1f;
             }
         }
+        // --- DEBUG: Agregar esencia manual desde inspector ---
+        if (addEssenceNow)
+        {
+            if (addNormalEssence > 0)
+            {
+                AddEssenceManually(WorldState.Normal, addNormalEssence);
+                addNormalEssence = 0;
+            }
+            if (addOtherWorldEssence > 0)
+            {
+                AddEssenceManually(WorldState.OtherWorld, addOtherWorldEssence);
+                addOtherWorldEssence = 0;
+            }
+            addEssenceNow = false;
+        }
     }
 
     private void OnWaveStarted(int wave, int totalEnemies)
@@ -174,58 +189,31 @@ public class PlayerExperienceManager : MonoBehaviour
         }
         return false;
     }
-
-#if UNITY_EDITOR
-    [Header("Test Essence")]
-    public int testNormalEssenceAmount = 500;
-    public int testOtherWorldEssenceAmount = 500;
-
-    private int lastTestNormalEssenceAmount = 0;
-    private int lastTestOtherWorldEssenceAmount = 0;
-
-    [ContextMenu("Sumar Normal Essence (Inspector)")]
-    public void AddNormalEssenceFromInspector()
+    [Header("Debug Essence")]
+    [SerializeField] private int addNormalEssence = 0;
+    [SerializeField] private int addOtherWorldEssence = 0;
+    [SerializeField] private bool addEssenceNow = false;
+    /// <summary>
+    /// Permite sumar esencia a mano desde el inspector para test.
+    /// </summary>
+    public void AddEssenceManually(WorldState world, int amount)
     {
-        AddEssencePerWorld(testNormalEssenceAmount, WorldState.Normal);
-        Debug.Log($"TEST: +{testNormalEssenceAmount} Normal Essence (Inspector)");
-    }
-
-    [ContextMenu("Sumar OtherWorld Essence (Inspector)")]
-    public void AddOtherWorldEssenceFromInspector()
-    {
-        AddEssencePerWorld(testOtherWorldEssenceAmount, WorldState.OtherWorld);
-        Debug.Log($"TEST: +{testOtherWorldEssenceAmount} OtherWorld Essence (Inspector)");
-    }
-
-    private void OnValidate()
-    {
-        if (testNormalEssenceAmount != lastTestNormalEssenceAmount)
+        if (world == WorldState.Normal)
         {
-            int diff = testNormalEssenceAmount - lastTestNormalEssenceAmount;
-            AddEssencePerWorld(diff, WorldState.Normal);
-            lastTestNormalEssenceAmount = testNormalEssenceAmount;
-            Debug.Log($"[TEST] Sumar Normal Essence desde Inspector: {diff} (Session: {GetSessionEssence(WorldState.Normal)})");
+            sessionNormalEssence += amount;
+            totalNormalEssence += amount;
+            PlayerPrefs.SetInt("TotalNormalEssence", totalNormalEssence);
         }
-        if (testOtherWorldEssenceAmount != lastTestOtherWorldEssenceAmount)
+        else
         {
-            int diff = testOtherWorldEssenceAmount - lastTestOtherWorldEssenceAmount;
-            AddEssencePerWorld(diff, WorldState.OtherWorld);
-            lastTestOtherWorldEssenceAmount = testOtherWorldEssenceAmount;
-            Debug.Log($"[TEST] Sumar OtherWorld Essence desde Inspector: {diff} (Session: {GetSessionEssence(WorldState.OtherWorld)})");
+            sessionOtherWorldEssence += amount;
+            totalOtherWorldEssence += amount;
+            PlayerPrefs.SetInt("TotalOtherWorldEssence", totalOtherWorldEssence);
         }
-    }
-
-    [ContextMenu("Reset Total Essence")]
-    public void ResetTotalEssence()
-    {
-        totalNormalEssence = 0;
-        totalOtherWorldEssence = 0;
-        PlayerPrefs.DeleteKey("TotalNormalEssence");
-        PlayerPrefs.DeleteKey("TotalOtherWorldEssence");
         PlayerPrefs.Save();
-        Debug.Log("Total Essence (ambas) reseteada.");
+
         WaveUIController.Instance?.UpdateExperienceUI();
     }
-#endif
+
 
 }

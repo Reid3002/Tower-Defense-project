@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     private GameObject previewContainer;
 
     public TileExpansion selectedTile = null;
-    public GameObject tileVisualPrefab;
+    //public GameObject tileVisualPrefab;
     private GameObject currentSelectableTile;
 
     public GameObject tilePreviewButtonPrefab;
@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     private GameObject currentTileButton;
     private TileExpansion currentTileData;
 
-    public Vector3 previewWorldPosition = new Vector3(100, 0, 0);
+    //public Vector3 previewWorldPosition = new Vector3(100, 0, 0);
 
     private TileExpansion _currentTileData;
     public TileExpansion CurrentTileData => _currentTileData;
@@ -135,14 +135,14 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private Vector2Int GetPreviewBaseGrid()
+    /*private Vector2Int GetPreviewBaseGrid()
     {
         float size = GridManager.Instance.cellSize;
         return new Vector2Int(
             Mathf.RoundToInt(previewWorldPosition.x / size),
             Mathf.RoundToInt(previewWorldPosition.z / size)
         );
-    }
+    }*/
 
     private Vector3 GetWorldFromGrid(Vector2Int gridPos)
     {

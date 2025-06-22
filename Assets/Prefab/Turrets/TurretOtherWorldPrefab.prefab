@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 5721761229169650696}
   - component: {fileID: -530612960136200151}
   - component: {fileID: -4746825798993084116}
+  - component: {fileID: -5005137991716240595}
   m_Layer: 0
   m_Name: TurretOtherWorldPrefab
   m_TagString: Turret
@@ -75,6 +76,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5886391253151756493}
+  - {fileID: 5457690009771176475}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5923145427433355936
@@ -84,7 +86,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7333658948748976991}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &1890560010008340660
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -108,7 +110,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 21633f55f08a4094e9276d9a1b195ac5, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -310,10 +312,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 4
-  fireRate: 1
-  damage: 10
+  fireRate: 0.7
+  damage: 15
   upgradeLevel: 1
   maxUpgradeLevel: 15
+  currentDamage: 10
+  currentRange: 4
+  currentFireRate: 1
 --- !u!114 &4599961383548608693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8597311518e05c44b9bcabc730eb2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretRenderer: {fileID: 1890560010008340660}
+  turretRenderer: {fileID: 6626678487271082356}
   boostedColor: {r: 0.6603774, g: 0.3346521, b: 0, a: 1}
   normalColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &-4746825798993084116
@@ -407,3 +412,156 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8983c58441e113845a93c0be25d63a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5005137991716240595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333658948748976991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf0f3c3ac9c37f45a68a56f8cf7cf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUpgradeLevel: 15
+  upgradeSteps:
+  - level: 1
+    damageMultiplier: 1
+    rangeMultiplier: 1
+    fireRateMultiplier: 1
+  - level: 2
+    damageMultiplier: 1.07
+    rangeMultiplier: 1.1
+    fireRateMultiplier: 1.15
+  - level: 3
+    damageMultiplier: 1.07
+    rangeMultiplier: 1.1
+    fireRateMultiplier: 1.15
+  - level: 4
+    damageMultiplier: 1.06
+    rangeMultiplier: 1.1
+    fireRateMultiplier: 1.15
+  - level: 5
+    damageMultiplier: 1.05
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.15
+  - level: 6
+    damageMultiplier: 1.05
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.15
+  - level: 7
+    damageMultiplier: 1.04
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.1
+  - level: 8
+    damageMultiplier: 1.04
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.1
+  - level: 9
+    damageMultiplier: 1.03
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.05
+  - level: 10
+    damageMultiplier: 1.03
+    rangeMultiplier: 1.05
+    fireRateMultiplier: 1.05
+  - level: 11
+    damageMultiplier: 1.02
+    rangeMultiplier: 1.05
+    fireRateMultiplier: 1.05
+  - level: 12
+    damageMultiplier: 1.02
+    rangeMultiplier: 1.05
+    fireRateMultiplier: 1.05
+  - level: 13
+    damageMultiplier: 1.02
+    rangeMultiplier: 1.05
+    fireRateMultiplier: 1.05
+  - level: 14
+    damageMultiplier: 1.01
+    rangeMultiplier: 1.05
+    fireRateMultiplier: 1.05
+  - level: 15
+    damageMultiplier: 1.02
+    rangeMultiplier: 1.07
+    fireRateMultiplier: 1.07
+--- !u!1001 &5491899333310060016
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3291181023223361483}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+      propertyPath: m_Name
+      value: BasicBallistaOW
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+--- !u!4 &5457690009771176475 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+  m_PrefabInstance: {fileID: 5491899333310060016}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6626678487271082356 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 019ec8236441e894db7155e10daf71e2, type: 3}
+  m_PrefabInstance: {fileID: 5491899333310060016}
+  m_PrefabAsset: {fileID: 0}

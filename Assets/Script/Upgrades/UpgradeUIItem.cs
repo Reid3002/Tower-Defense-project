@@ -1,9 +1,10 @@
 ﻿using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UpgradeUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UpgradeUIItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("UI")]
     public Image iconImage; // la imagen principal
@@ -32,7 +33,7 @@ public class UpgradeUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         unlockCallback = onUnlock;
 
         // Actualizá el icono (si tenés un campo Sprite)
-        // iconImage.sprite = upgrade.icon;
+        iconImage.sprite = upgrade.icon;
 
         canUnlock = !unlocked;
         // Visual feedback:
@@ -95,14 +96,44 @@ public class UpgradeUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         // Posicionar el tooltip a la derecha del icono
         RectTransform tooltipRect = tooltipPanel.GetComponent<RectTransform>();
-        tooltipRect.anchoredPosition = new Vector2(200f, 0f); // 100px a la derecha, ajustá a gusto
+        tooltipRect.anchoredPosition = new Vector2(300f, 0f); // 100px a la derecha, ajustá a gusto
 
         // Rellená textos
         tooltipNameText.text = currentUpgrade.upgradeName;
         tooltipDescriptionText.text = currentUpgrade.description;
-        tooltipCostText.text = $"Cost: {currentUpgrade.xpCost}";
-    }
+        bool isUnlocked = UpgradeManager.Instance != null && UpgradeManager.Instance.IsUnlocked(currentUpgrade.upgradeId);
 
+        if (isUnlocked)
+        {
+            tooltipCostText.text = "Unlocked";
+        }
+        else
+        {
+            string costText;
+            switch (currentUpgrade.category)
+            {
+                case UpgradeCategory.NormalWorld:
+                    costText = $"Essence Normal World: {currentUpgrade.xpCost}";
+                    break;
+                case UpgradeCategory.OtherWorld:
+                    costText = $"Essence Other World: {currentUpgrade.xpCost}";
+                    break;
+                case UpgradeCategory.General:
+                    int mitad = currentUpgrade.xpCost / 2;
+                    // Si el costo es impar, sumá 1 a Normal World
+
+                    int normal = mitad + (currentUpgrade.xpCost % 2);
+                    int other = mitad;
+
+                    costText = $"Essence Normal World: {normal}\nEssence Other World: {other}";
+                    break;
+                default:
+                    costText = $"Essence: {currentUpgrade.xpCost}";
+                    break;
+            }
+            tooltipCostText.text = costText;
+        }
+    }
 
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -114,12 +145,22 @@ public class UpgradeUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        // Validar esencia suficiente antes de permitir el hold
+        if (!HasEnoughEssenceForCurrentUpgrade())
+        {
+            // (Opcional) Feedback: podés mostrar un mensaje, cambiar color, etc.
+            Debug.Log("No tenés la esencia suficiente para esta mejora.");
+            return;
+        }
+
         if (canUnlock)
         {
             isHolding = true;
             holdTimer = 0;
         }
     }
+
+
 
     public void OnPointerUp(PointerEventData eventData)
     {
@@ -130,14 +171,36 @@ public class UpgradeUIItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void UnlockUpgrade()
     {
-        // Llamá a tu manager para desbloquear
-        // Por ejemplo: OnUnlockUpgrade?.Invoke(currentUpgrade.upgradeId);
-        // O podés comunicarte directo con el manager:
+        Debug.Log("Intentando desbloquear: " + currentUpgrade.upgradeId);
 
-        // Desactivá el unlock si ya está hecho
+        if (!canUnlock) return;
+
+        unlockCallback?.Invoke(currentUpgrade.upgradeId);
+
         canUnlock = false;
         iconImage.color = new Color(1, 1, 1, 0.4f);
         tooltipPanel.SetActive(false);
-        // ...otros efectos visuales
     }
+    private bool HasEnoughEssenceForCurrentUpgrade()
+    {
+        if (currentUpgrade == null) return false;
+
+        switch (currentUpgrade.category)
+        {
+            case UpgradeCategory.NormalWorld:
+                return PlayerExperienceManager.Instance.GetTotalEssence(WorldState.Normal) >= currentUpgrade.xpCost;
+
+            case UpgradeCategory.OtherWorld:
+                return PlayerExperienceManager.Instance.GetTotalEssence(WorldState.OtherWorld) >= currentUpgrade.xpCost;
+
+            case UpgradeCategory.General:
+                int half = Mathf.CeilToInt(currentUpgrade.xpCost / 2f);
+                return PlayerExperienceManager.Instance.GetTotalEssence(WorldState.Normal) >= half
+                    && PlayerExperienceManager.Instance.GetTotalEssence(WorldState.OtherWorld) >= half;
+
+            default:
+                return false;
+        }
+    }
+
 }

@@ -71,10 +71,10 @@ public class Core : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        //Debug.LogWarning($">>> TakeDamage llamado por: {Environment.StackTrace}");
-        OnCoreDamaged?.Invoke();
-
         currentHealth -= damage;
+
+        // Disparar animación delay de barra (antes de chequear game over)
+        CoreUI.Instance.OnCoreDamaged();
 
         if (currentHealth <= 0)
         {
@@ -82,8 +82,6 @@ public class Core : MonoBehaviour
             GameManager.Instance.GameOver();
             return;
         }
-
-        CoreUI.Instance.UpdateUI();
     }
 
     public void UpgradeCore()

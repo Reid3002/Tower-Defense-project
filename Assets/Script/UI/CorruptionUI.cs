@@ -7,6 +7,7 @@ public class CorruptionUI : MonoBehaviour
     [Header("Referencias UI")]
     [SerializeField] private Image corruptionFillImage;
     [SerializeField] private TMP_Text corruptionLevelText;
+    [SerializeField] private TMP_Text penaltyDescriptionText;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class CorruptionUI : MonoBehaviour
             // Inicializar valores
             UpdateFillAmount(CorruptionManager.Instance.GetCorruptionPercent());
             UpdateLevelText(CorruptionManager.Instance.CurrentLevel);
+            penaltyDescriptionText.text = CorruptionManager.Instance.GetPenaltyDescription();
         }
     }
 
@@ -71,6 +73,8 @@ public class CorruptionUI : MonoBehaviour
 
         //actualizar color de la barra
         UpdateLevelVisuals(level);
+
+        penaltyDescriptionText.text = CorruptionManager.Instance.GetPenaltyDescription();
     }
 
     private void UpdateLevelVisuals(CorruptionManager.CorruptionLevel level)

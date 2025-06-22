@@ -44,7 +44,7 @@ TagManager:
   - 
   - 
   - UICamera
-  - 
+  - Tile Preview
   m_SortingLayers:
   - name: Default
     uniqueID: 0

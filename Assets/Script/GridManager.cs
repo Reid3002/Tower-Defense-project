@@ -423,7 +423,7 @@ public class GridManager : MonoBehaviour
 
 
         GameObject preview = Instantiate(tilePreviewPrefab, worldPos, Quaternion.identity);
-        preview.GetComponent<PreviewClickable>().Initialize(tile, worldPos);
+        //preview.GetComponent<PreviewClickable>().Initialize(tile, worldPos);
 
         currentPreview = preview;
     }
@@ -503,6 +503,7 @@ public class TileExpansion
     public string tileName;
     public Vector2Int tileSize = new Vector2Int(5, 5);
     public List<Vector2Int> pathOffsets;
+
 
     public TileExpansion(string name, Vector2Int[] offsets) 
     {

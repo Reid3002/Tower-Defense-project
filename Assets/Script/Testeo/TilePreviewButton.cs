@@ -26,7 +26,7 @@ public class TilePreviewButton : MonoBehaviour
         );
 
         GridManager.Instance.ApplyTileExpansionAtWorldPosition(tile, spawnWorld);
-        ui.ClearPreview();
+        //ui.ClearPreview();
         Destroy(gameObject);
 
         // Iniciar oleada 1 luego de seleccionar el primer tile
