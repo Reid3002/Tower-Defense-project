@@ -20,6 +20,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private int maxWaves = 45;
 
     private int currentWave = 0;
+    public int CurrentWave => currentWave;
     private int enemiesAlive = 0;
     private int enemiesThisWave = 0;
     private int consecutiveOtherWorldWaves = 0;

@@ -6,6 +6,7 @@ public class Core : MonoBehaviour
     [SerializeField] private int baseHealth = 10; // NUEVO, visible en inspector si querés
     public int maxHealth = 10; // solo para mostrar en inspector
     private int currentHealth;
+    public int CurrentHealth {  get { return currentHealth; } }
 
     public int coreLevel = 1;
     public int maxCoreLevel = 3;

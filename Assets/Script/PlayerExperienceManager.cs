@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.LightTransport;
 
 public class PlayerExperienceManager : MonoBehaviour
 {
@@ -11,7 +12,11 @@ public class PlayerExperienceManager : MonoBehaviour
 
     // ESENCIA por sesión (solo la run actual)
     private int sessionNormalEssence = 0;
+    public int SessionNormalEssence { get { return sessionNormalEssence; } }
     private int sessionOtherWorldEssence = 0;
+    public int SessionOtherWorldEssence { get{ return sessionOtherWorldEssence; } }
+
+    public event System.Action<WorldState, int> OnEssenceGained;
 
     private float timePlayed = 0f;
 
@@ -141,6 +146,7 @@ public class PlayerExperienceManager : MonoBehaviour
             sessionOtherWorldEssence += amount;
 
         WaveUIController.Instance?.UpdateExperienceUI();
+        OnEssenceGained?.Invoke(world,amount);
     }
 
     /// <summary>
@@ -213,6 +219,7 @@ public class PlayerExperienceManager : MonoBehaviour
         PlayerPrefs.Save();
 
         WaveUIController.Instance?.UpdateExperienceUI();
+        OnEssenceGained?.Invoke(world, amount);
     }
 
 

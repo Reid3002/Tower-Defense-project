@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
 using System.Collections.Generic;
 using Unity.Services.Analytics;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     private bool isPaused = false;
 
     public float timePlayed { get; private set; } // público para que lo use ResultScene
+
+    public System.Action OnMainMenuPressed = delegate { };
 
     private void Update()
     {
@@ -82,6 +85,7 @@ public class GameManager : MonoBehaviour
     //Eliminar Funcion de ResultSceneController más adelante
     public void OnMainMenuButton()
     {
+        OnMainMenuPressed?.Invoke();
         SceneManager.LoadScene("MainMenu");
     }
 

@@ -72,6 +72,10 @@ public class Enemy : MonoBehaviour, IDamageDealer
 
         int damage = data != null ? data.damageToCore : 1;
         Core.Instance.TakeDamage(damage);
+        if (Core.Instance.CurrentHealth <= 0)
+        {
+            AnalyticsManager.Instance.RecordNemeses(Type);
+        }
         Health.Die();
     }
 

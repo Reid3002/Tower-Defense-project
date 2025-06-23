@@ -48,9 +48,7 @@ public class EnemySpawner : MonoBehaviour
         enemy.InitializePath(path, Core.Instance.gameObject, GridManager.Instance);
 
         //enemy.SetOriginWorld(WorldManager.Instance.CurrentWorld);
-        //enemy.WorldLogic.UpdateVisibility();
-
-        WaveManager.Instance.RecordEnemyTypesSpawned(enemy);
+        //enemy.WorldLogic.UpdateVisibility();        
 
         return enemy;
     }

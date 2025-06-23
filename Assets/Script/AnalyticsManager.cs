@@ -11,28 +11,41 @@ public class AnalyticsManager : MonoBehaviour
     public static AnalyticsManager Instance;
     private bool isInitialized = false;
 
-
     //---------Wave Variables----------------------------------------------------------
 
     private int _waveNumber;
-    private int _enemiesSpawned;
-    private string _modifierForThisWave;
-    private int _enemiesDefeated;
-    private int _goldEarned;
-    private float _timeTakenToFinishWave;
-    private string _mostSpawnedEnemy;
+
+    private float _timeTakenToFinishWave =0;
+
+    private int waveDeaths = 0;
+
+    private bool startTimer = false;
 
     //--------------------------------------------------------------------------------
+    //-----------Playthrough Variables------------------------------------------------------------------------
 
+    private int normalEscence = 0;
+    private int OtherEscence = 0;
+    private int gold = 0;
+    private float playTime = 0;
+    private bool startPlaythroughTimer = false;
+
+    //-------------------------------------------------------------------------------------------------------
     //-------------Sesion Variables-------------------------------------------------------------------
     private float timeSpentOnNormalWorld = 0;
     private float timeSpentOnOtherWorld = 0;
     private int numberOfTimesSwitched = 0;
     private float sesionTime = 0;
 
+    private int timesPLayed = 0;
 
     private int numberOfDeaths;
+
     private Dictionary<string, int> modsChosen = new Dictionary<string, int>();
+
+    private Dictionary<string, int> nemeses = new Dictionary<string, int>();
+
+    private bool upgradeUnlocked = false;
 
     //--------------------------------------------------------------------------------
 
@@ -53,6 +66,7 @@ public class AnalyticsManager : MonoBehaviour
             isInitialized = true; // Ahora se inicializa correctamente
             Debug.Log("Analytics inicializado correctamente");
         }
+        
     }
 
     private void Start()
@@ -60,20 +74,55 @@ public class AnalyticsManager : MonoBehaviour
         WorldManager.OnWorldChanged += GetWorldSwitch;
         Core.OnCoreDestroyed += GetDeaths;
         ModifierPanelSelection.Instance.onModifierChosenAnalitics += CountModifiers;
+        WaveManager.Instance.OnWaveEnded += RecordWaveInfo;
+
+        WaveManager.Instance.OnWaveStarted += StartTimer;
+        WaveManager.Instance.OnWaveEnded += StopTimer;
+
+        GameManager.Instance.OnMainMenuPressed += RecordWaveAbandonned;
+        GameManager.Instance.OnMainMenuPressed += ReportPlaythrough;
+
+        MainMenuController.OnPlayPressed += CountTimesPLayed;
+        MainMenuController.OnPlayPressed += TogglePlaythroughTimer;
+
+        UpgradeManager.Instance.OnUpgradeUnlocked += FirstUpgrade;
+
+        GoldManager.Instance.OnGoldEarned += RecordGold;
+
+        PlayerExperienceManager.Instance.OnEssenceGained += RecordEssence;
+        
     }
 
     private void Update()
     {
         sesionTime += Time.deltaTime;
 
-        if(WorldManager.Instance.CurrentWorld == WorldState.Normal)
+        if (startPlaythroughTimer)
         {
-            timeSpentOnNormalWorld += Time.deltaTime;
+            playTime += Time.deltaTime;
         }
-        else if (WorldManager.Instance.CurrentWorld == WorldState.OtherWorld)
+
+        if (startTimer)
         {
-            timeSpentOnOtherWorld += Time.deltaTime;
+            _timeTakenToFinishWave += Time.deltaTime;
+
+            if (WorldManager.Instance.CurrentWorld == WorldState.Normal)
+            {
+                timeSpentOnNormalWorld += Time.deltaTime;
+            }
+            else if (WorldManager.Instance.CurrentWorld == WorldState.OtherWorld)
+            {
+                timeSpentOnOtherWorld += Time.deltaTime;
+            }
         }
+    }
+
+    private void OnApplicationQuit() // Sesion info sender
+    {
+        ReportModifiers();
+        ReportNemeses();
+        SesionReport();
+        ReportWorldInfo();
     }
 
     public void CurrentWave(int maxWave)
@@ -150,37 +199,46 @@ public class AnalyticsManager : MonoBehaviour
 
         AnalyticsService.Instance.Flush();
         Debug.Log($"Eventos enviados: Tile_Chosen, Cantidad: {tilesChosen.Count}");
-    }
-    
-    public void RecordWaveInfoStart(int waveNumber, int enemiesSpawned, string modifierForThisWave = "none")
+    }    
+
+
+    public void RecordWaveInfo()
     {
-        _waveNumber = waveNumber;
-        _enemiesSpawned = enemiesSpawned;
-        _modifierForThisWave = modifierForThisWave;
+        if (Core.Instance.CurrentHealth > 0)
+        {
+            WaveInformation waveInformation = new WaveInformation()
+            {
+                WaveNumber = WaveManager.Instance.CurrentWave,
+                TimeTakenToFinishWave = _timeTakenToFinishWave,
+                Deaths = waveDeaths,
+                Completed = true,
+
+            };
+            AnalyticsService.Instance.RecordEvent(waveInformation);
+
+            AnalyticsService.Instance.Flush();
+            waveDeaths = 0;
+            Debug.Log("Wave info sent");
+        }
+        
+        _timeTakenToFinishWave = 0;
     }
 
-    public void RecordWaveInfoEnd(int goldEarned, float timeTakenToFinishWave, int enemiesDefeated = 0, string mostSpawnedEnemy = "none", string enemyType1 = "none", int enemiesType1Spawned = 0, string enemyType2 = "none", int enemiesType2Spawned = 0, string enemyType3 = "none", int enemiesType3Spawned = 0)
+    public void RecordWaveAbandonned()
     {
-        _goldEarned = goldEarned;
-        _timeTakenToFinishWave = timeTakenToFinishWave;
-        _enemiesDefeated = enemiesDefeated;
-        _mostSpawnedEnemy = mostSpawnedEnemy;
-
         WaveInformation waveInformation = new WaveInformation()
         {
             WaveNumber = _waveNumber,
-            EnemiesSpawned = _enemiesSpawned,
-            EnemiesDefeated = _enemiesDefeated,
-            MostSpawnedEnemy = _mostSpawnedEnemy,
-            ModifierForThisWave = _modifierForThisWave,
-            GoldEarned = _goldEarned,
             TimeTakenToFinishWave = _timeTakenToFinishWave,
+            Deaths = waveDeaths,
+            Completed = false,
+
         };
         AnalyticsService.Instance.RecordEvent(waveInformation);
 
         AnalyticsService.Instance.Flush();
-        Debug.Log("Wave info sent");
-
+        waveDeaths = 0;
+        _timeTakenToFinishWave = 0;
     }
 
     private void GetWorldSwitch(WorldState world)
@@ -191,6 +249,7 @@ public class AnalyticsManager : MonoBehaviour
     private void GetDeaths()
     {
         numberOfDeaths++;
+        waveDeaths++;
     }
 
     private void CountModifiers(IGameModifier modifier)
@@ -204,5 +263,148 @@ public class AnalyticsManager : MonoBehaviour
             modsChosen.Add(modifier.Name, 1);
         }
     }
+    public void RecordNemeses(EnemyType enemy)
+    {
+        string type = enemy.ToString();
+        if (nemeses.ContainsKey(type))
+        {
+            nemeses[type]++;
+        }
+        else
+        {
+            nemeses.Add(type, 1);
+        }
+    }
+
+    private void ReportModifiers()
+    {
+        foreach (var modifier in modsChosen)
+        {
+            ModifierAnalytics modifierAnalytics = new ModifierAnalytics();
+            modifierAnalytics.Name = modifier.Key;
+            modifierAnalytics.TimesChosen = modifier.Value;
+
+            AnalyticsService.Instance.RecordEvent(modifierAnalytics);
+
+            AnalyticsService.Instance.Flush();
+        }
+    }
+
+    private void ReportNemeses()
+    {
+        foreach (var enemy in nemeses)
+        {
+            NemesisAnalitics nemesisAnalitics = new NemesisAnalitics();
+            nemesisAnalitics.Name = enemy.Key;
+            nemesisAnalitics.Kills = enemy.Value;
+
+            AnalyticsService.Instance.RecordEvent(nemesisAnalitics);
+
+            AnalyticsService.Instance.Flush();
+        }
+    }
+
+    private void StartTimer(int a, int b)
+    {
+        startTimer = true;
+    }
+
+    private void StopTimer()
+    {
+        startTimer = false;
+    }
+
+    private void CountTimesPLayed()
+    {
+        timesPLayed++;
+    }
+
+    private void SesionReport()
+    {
+        SesionInformation sesionInformation = new SesionInformation();       
+        sesionInformation.WorldSwitchAmmount = numberOfTimesSwitched;
+        sesionInformation.Deaths = numberOfDeaths;
+        sesionInformation.TimesPlayed = timesPLayed;
+        sesionInformation.SesionTime = sesionTime;
+
+        AnalyticsService.Instance.RecordEvent(sesionInformation);
+
+        AnalyticsService.Instance.Flush();
+    }
+
+    private void FirstUpgrade(UpgradeData upgrade)
+    {
+        if(upgradeUnlocked == false)
+        {
+            FirstUpgradeAnalitycs upgradeEvent = new FirstUpgradeAnalitycs();
+            upgradeEvent.Deaths = numberOfDeaths;
+            upgradeEvent.UpgradeName = upgrade.upgradeName;
+
+            AnalyticsService.Instance.RecordEvent(upgradeEvent);
+
+            AnalyticsService.Instance.Flush();
+        }
+        upgradeUnlocked = true;
+    }
+
+    private void TogglePlaythroughTimer()
+    {
+        startPlaythroughTimer = !startPlaythroughTimer;
+    }
+
+    private void ReportPlaythrough()
+    {
+        PlaythroughInfo playthroughInfo = new PlaythroughInfo();
+        playthroughInfo.NormalEscence = normalEscence;
+        playthroughInfo.OtherEscence = OtherEscence;
+        playthroughInfo.Gold = gold;
+        playthroughInfo.Duration = playTime;
+
+        AnalyticsService.Instance.RecordEvent(playthroughInfo);
+
+        AnalyticsService.Instance.Flush();
+
+        normalEscence = 0;
+        OtherEscence = 0;
+        gold = 0;
+        playTime = 0;
+    }
+
+    private void RecordEssence(WorldState world, int amount)
+    {
+        if(world == WorldState.Normal)
+        {
+            normalEscence += amount;
+        }
+        else
+        {
+            OtherEscence += amount;
+        }
+    }
+
+    private void RecordGold(int amount)
+    {
+        gold += amount;
+    }
+
+    private void ReportWorldInfo()
+    {
+        WorldAnalitics worldAnalitics = new WorldAnalitics();
+        worldAnalitics.World = "NormalWorld";
+        worldAnalitics.Time = timeSpentOnNormalWorld;
+
+        AnalyticsService.Instance.RecordEvent(worldAnalitics);
+
+        AnalyticsService.Instance.Flush();
+
+        WorldAnalitics worldAnalitics2 = new WorldAnalitics();
+        worldAnalitics2.World = "OtherWorld";
+        worldAnalitics2.Time = timeSpentOnOtherWorld;
+
+        AnalyticsService.Instance.RecordEvent(worldAnalitics2);
+
+        AnalyticsService.Instance.Flush();
+    }
+
 
 }
