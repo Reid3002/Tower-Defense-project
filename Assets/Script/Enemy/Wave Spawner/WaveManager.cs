@@ -153,6 +153,7 @@ public class WaveManager : MonoBehaviour
 
             // Evento de fin de oleada
             OnWaveEnded?.Invoke();
+            print("waveEnded");
         }
     }
     public int GetCurrentWave() => currentWave;

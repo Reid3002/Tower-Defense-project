@@ -4,12 +4,14 @@ using Unity.Services.Analytics;
 using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 
 public class AnalyticsManager : MonoBehaviour
 {
     public static AnalyticsManager Instance;
     private bool isInitialized = false;
+    [SerializeField] GameObject warning;
 
     //---------Wave Variables----------------------------------------------------------
 
@@ -29,6 +31,7 @@ public class AnalyticsManager : MonoBehaviour
     private int gold = 0;
     private float playTime = 0;
     private bool startPlaythroughTimer = false;
+    private bool enableSubscriptions = false;
 
     //-------------------------------------------------------------------------------------------------------
     //-------------Sesion Variables-------------------------------------------------------------------
@@ -48,7 +51,7 @@ public class AnalyticsManager : MonoBehaviour
     private bool upgradeUnlocked = false;
 
     //--------------------------------------------------------------------------------
-
+    private float waitTimer = 0;
 
     private async void Awake()
     {
@@ -62,32 +65,36 @@ public class AnalyticsManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             await UnityServices.InitializeAsync();
-            AnalyticsService.Instance.StartDataCollection();
-            isInitialized = true; // Ahora se inicializa correctamente
-            Debug.Log("Analytics inicializado correctamente");
+            //AnalyticsService.Instance.StartDataCollection();
+            //isInitialized = true; // Ahora se inicializa correctamente
+            //Debug.Log("Analytics inicializado correctamente");
         }
         
     }
 
     private void Start()
     {
+        warning.gameObject.SetActive(true);
+
         WorldManager.OnWorldChanged += GetWorldSwitch;
-        Core.OnCoreDestroyed += GetDeaths;
-        ModifierPanelSelection.Instance.onModifierChosenAnalitics += CountModifiers;
-        WaveManager.Instance.OnWaveEnded += RecordWaveInfo;
+        Core.OnCoreDestroyed += GetDeaths; 
 
-        WaveManager.Instance.OnWaveStarted += StartTimer;
-        WaveManager.Instance.OnWaveEnded += StopTimer;
+       
 
-        GameManager.Instance.OnMainMenuPressed += RecordWaveAbandonned;
-        GameManager.Instance.OnMainMenuPressed += ReportPlaythrough;
+        ResultSceneController.OnButtonPressed += ReportPlaythrough;
+        ResultSceneController.OnButtonPressed += RemoveGameplaySubscriptions;
+        ResultSceneController.OnMainMenuPressed += RecordWaveAbandonned;
+        ResultSceneController.OnMainMenuPressed += ReportPlaythrough;
+        ResultSceneController.OnMainMenuPressed += RemoveGameplaySubscriptions;
 
         MainMenuController.OnPlayPressed += CountTimesPLayed;
         MainMenuController.OnPlayPressed += TogglePlaythroughTimer;
 
+
+
         UpgradeManager.Instance.OnUpgradeUnlocked += FirstUpgrade;
 
-        GoldManager.Instance.OnGoldEarned += RecordGold;
+        
 
         PlayerExperienceManager.Instance.OnEssenceGained += RecordEssence;
         
@@ -115,6 +122,29 @@ public class AnalyticsManager : MonoBehaviour
                 timeSpentOnOtherWorld += Time.deltaTime;
             }
         }
+
+        if(playTime >= 5 && enableSubscriptions == false)
+        {
+            ModifierPanelSelection.Instance.onModifierChosenAnalitics += CountModifiers;
+            WaveManager.Instance.OnWaveEnded += RecordWaveInfo;
+            WaveManager.Instance.OnWaveStarted += StartTimer;
+            WaveManager.Instance.OnWaveEnded += StopTimer;
+
+            GameManager.Instance.OnMainMenuPressed += RecordWaveAbandonned;
+            GameManager.Instance.OnMainMenuPressed += ReportPlaythrough;
+            GameManager.Instance.OnMainMenuPressed += RemoveGameplaySubscriptions;
+            GoldManager.Instance.OnGoldEarned += RecordGold;
+            enableSubscriptions = true;
+            
+        }
+    }
+
+    public void StartAnalitics()
+    {
+        AnalyticsService.Instance.StartDataCollection();
+        isInitialized = true; // Ahora se inicializa correctamente
+        Debug.Log("Analytics inicializado correctamente");
+        DontShowWarning();
     }
 
     private void OnApplicationQuit() // Sesion info sender
@@ -219,6 +249,7 @@ public class AnalyticsManager : MonoBehaviour
             AnalyticsService.Instance.Flush();
             waveDeaths = 0;
             Debug.Log("Wave info sent");
+            print("Wave info sent");
         }
         
         _timeTakenToFinishWave = 0;
@@ -235,8 +266,7 @@ public class AnalyticsManager : MonoBehaviour
 
         };
         AnalyticsService.Instance.RecordEvent(waveInformation);
-
-        AnalyticsService.Instance.Flush();
+        
         waveDeaths = 0;
         _timeTakenToFinishWave = 0;
     }
@@ -350,6 +380,7 @@ public class AnalyticsManager : MonoBehaviour
     private void TogglePlaythroughTimer()
     {
         startPlaythroughTimer = !startPlaythroughTimer;
+        AnalyticsService.Instance.Flush();
     }
 
     private void ReportPlaythrough()
@@ -361,7 +392,6 @@ public class AnalyticsManager : MonoBehaviour
         playthroughInfo.Duration = playTime;
 
         AnalyticsService.Instance.RecordEvent(playthroughInfo);
-
         AnalyticsService.Instance.Flush();
 
         normalEscence = 0;
@@ -406,5 +436,23 @@ public class AnalyticsManager : MonoBehaviour
         AnalyticsService.Instance.Flush();
     }
 
+    public void DontShowWarning()
+    {
+        warning.gameObject.SetActive(false);
+    }
+
+    private void RemoveGameplaySubscriptions()
+    {
+        //ModifierPanelSelection.Instance.onModifierChosenAnalitics -= CountModifiers;
+        //WaveManager.Instance.OnWaveEnded -= RecordWaveInfo;
+        //WaveManager.Instance.OnWaveStarted -= StartTimer;
+        //WaveManager.Instance.OnWaveEnded -= StopTimer;
+
+        //GameManager.Instance.OnMainMenuPressed -= RecordWaveAbandonned;        
+        enableSubscriptions = false;        
+        //GameManager.Instance.OnMainMenuPressed -= ReportPlaythrough;
+        //GoldManager.Instance.OnGoldEarned -= RecordGold;
+        //GameManager.Instance.OnMainMenuPressed -= RemoveGameplaySubscriptions;
+    }
 
 }

@@ -11,6 +11,9 @@ public class ResultSceneController : MonoBehaviour
     public TMP_Text totalNormalEssenceText;
     public TMP_Text totalOtherEssenceText;
 
+    public static System.Action OnButtonPressed = delegate { };
+    public static System.Action OnMainMenuPressed = delegate { };
+
 
     void Start()
     {
@@ -31,12 +34,15 @@ public class ResultSceneController : MonoBehaviour
 
     public void OnMainMenuButton()
     {
+        OnButtonPressed();
+        OnMainMenuPressed();
         SceneManager.LoadScene("MainMenu");
     }
 
     public void OnPlayAgainButton()
     {
         SceneManager.LoadScene("GameScene");
+        OnButtonPressed();
     }
 
     private string FormatTime(float seconds)

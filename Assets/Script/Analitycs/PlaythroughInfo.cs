@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class PlaythroughInfo : Unity.Services.Analytics.Event
 {
-    public PlaythroughInfo() : base("NemesisAnalitics")
+    public PlaythroughInfo() : base("PlaythroughInfo")
     {
 
     }    
 
-    public int NormalEscence { set { SetParameter("Escence", value); } }
+    public int NormalEscence { set { SetParameter("NormalEscence", value); } }
 
-    public int OtherEscence { set { SetParameter("Escence", value); } }
+    public int OtherEscence { set { SetParameter("OtherEscence", value); } }
 
     public int Gold { set { SetParameter("Gold", value); } }
 

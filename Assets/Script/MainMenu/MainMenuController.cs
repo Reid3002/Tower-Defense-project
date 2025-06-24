@@ -8,6 +8,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private string levelScene = "GameScene";
 
     public static System.Action OnPlayPressed = delegate { };
+    public static System.Action OnExitPressed = delegate { };
 
     private void Start()
     {
@@ -20,11 +21,12 @@ public class MainMenuController : MonoBehaviour
     }
     public void OnPlayButtonPressed()
     {
-        OnPlayPressed();
+        OnPlayPressed?.Invoke();
         SceneManager.LoadScene(levelScene);
     }
     public void OnExitButtonPressed()
     {
+        OnExitPressed?.Invoke();
         Application.Quit();
     }
 }
