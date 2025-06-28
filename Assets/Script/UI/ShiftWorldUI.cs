@@ -7,6 +7,10 @@ public class ShiftWorldUI : MonoBehaviour
     [SerializeField] private Image fillImage; // Image tipo Filled (asignar en Inspector)
 
     private WorldManager worldManager;
+    private bool isWaveActive = false;
+
+    private float pauseTimestamp;
+
 
     void Start()
     {
@@ -18,12 +22,35 @@ public class ShiftWorldUI : MonoBehaviour
             return;
         }
 
-        // Opcional: suscribite al evento si querés reaccionar visualmente al cambio de mundo
+        // Suscribirse al cambio de mundo (opcional, solo si lo usás)
         WorldManager.OnWorldChanged += OnWorldChanged;
 
-        UpdateBar();
-    }
+        // **Suscribirse a los eventos de la oleada**
+        if (WaveManager.Instance != null)
+        {
+            WaveManager.Instance.OnWaveStarted += HandleWaveStarted;
+            WaveManager.Instance.OnWaveEnded += HandleWaveEnded;
+        }
 
+        // La barra solo se actualiza si arranca la oleada, así que no llamamos UpdateBar() acá
+    }
+    private void OnEnable()
+    {
+        // **Suscribirse también acá, por seguridad (si reiniciás el script)**
+        if (WaveManager.Instance != null)
+        {
+            WaveManager.Instance.OnWaveStarted += HandleWaveStarted;
+            WaveManager.Instance.OnWaveEnded += HandleWaveEnded;
+        }
+    }
+    private void OnDisable()
+    {
+        if (WaveManager.Instance != null)
+        {
+            WaveManager.Instance.OnWaveStarted -= HandleWaveStarted;
+            WaveManager.Instance.OnWaveEnded -= HandleWaveEnded;
+        }
+    }
     void OnDestroy()
     {
         WorldManager.OnWorldChanged -= OnWorldChanged;
@@ -31,7 +58,9 @@ public class ShiftWorldUI : MonoBehaviour
 
     void Update()
     {
-        UpdateBar();
+        // Solo actualizar la barra si la oleada está activa
+        if (isWaveActive)
+            UpdateBar();
     }
 
     private void UpdateBar()
@@ -72,4 +101,26 @@ public class ShiftWorldUI : MonoBehaviour
         float elapsed = Time.time - GetLastShiftTime();
         return elapsed >= cooldown;
     }
+    private void HandleWaveStarted(int wave, int enemies)
+    {
+        isWaveActive = true;
+        float pausedDuration = Time.time - pauseTimestamp;
+        AdjustLastShiftTime(pausedDuration);
+    }
+
+
+    private void HandleWaveEnded()
+    {
+        isWaveActive = false;
+        pauseTimestamp = Time.time;
+
+    }
+    private void AdjustLastShiftTime(float delta)
+    {
+        var type = typeof(WorldManager);
+        var field = type.GetField("lastShiftTime", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        float lastShift = (float)field.GetValue(worldManager);
+        field.SetValue(worldManager, lastShift + delta);
+    }
+
 }

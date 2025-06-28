@@ -18,38 +18,15 @@ public class TurretSelectionManager : MonoBehaviour
         Instance = this;
     }
 
-    public void SelectHeavyTurret()
+    public void SelectTurretById(string turretId)
     {
-        selectedTurret = heavyTurret;
-        //Debug.Log("Torreta pesada seleccionada.");
+        // Buscá el objeto TurretSelection por id
+        if (turretId == "basic") selectedTurret = basicTurret;
+        else if (turretId == "basic_otherworld") selectedTurret = OtherWorldTurret;
+        // ... etc para las otras
+        Debug.Log($"Seleccionaste torreta id={turretId}");
     }
 
-    public void SelectBasicTurret()
-    {
-        selectedTurret = basicTurret;
-        //Debug.Log("Torreta rápida seleccionada.");
-    }
-
-    public void SelectGoldTurret()
-    {
-        selectedTurret = goldTurret;
-        //Debug.Log("Torreta de oro seleccionada.");
-    }
-    public void SelectAOETurret()
-    {
-        selectedTurret = AOETurret;
-        //Debug.Log("Torreta de AOE seleccionada.");
-    }
-    public void SelectSlowTurret()
-    {
-        selectedTurret = SlowTurret;
-        //Debug.Log("Torreta de Slow seleccionada.");
-    }
-    public void SelectOtherWorldTurret()
-    {
-        selectedTurret = OtherWorldTurret;
-        //Debug.Log("Torreta de OtherWorld seleccionada.");
-    }
 }
 
 [System.Serializable]

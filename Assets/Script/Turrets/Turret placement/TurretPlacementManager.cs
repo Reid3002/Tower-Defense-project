@@ -52,9 +52,19 @@ public class TurretPlacementManager : MonoBehaviour
         mat.renderQueue = 3000;
         return mat;
     }
-
     public void ShowPreview(Vector3 position, TurretSelection selection, bool canPlace)
     {
+        // Buscá los datos de la torreta seleccionada
+        var data = TurretCostManager.Instance.GetCurrentCost(selection.turretId);
+
+        // Validá si hay oro suficiente
+        bool hasGold = GoldManager.Instance.HasEnoughGold(data);
+
+        // El preview solo puede ser verde si ambas condiciones se cumplen
+        bool finalCanPlace = canPlace && hasGold;
+
+        Debug.Log($"ShowPreview: canPlace={canPlace}, oro={GoldManager.Instance.currentGold}");
+
         if (selection == null || selection.turretPrefab == null)
             return;
 
@@ -70,13 +80,14 @@ public class TurretPlacementManager : MonoBehaviour
         foreach (var comp in previewInstance.GetComponentsInChildren<MonoBehaviour>())
             comp.enabled = false;
 
-        // Crear material transparente segun si se puede o no
-        Material previewMaterial = CreatePreviewMaterial(canPlace);
+        // Crear material transparente según si se puede o no
+        Material previewMaterial = CreatePreviewMaterial(finalCanPlace);
 
         // Asignar material a todos los renderers del preview
         foreach (var renderer in previewInstance.GetComponentsInChildren<Renderer>())
             renderer.material = previewMaterial;
     }
+
 
     public void HidePreview()
     {

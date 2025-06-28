@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CellInteraction : MonoBehaviour
 {
+    public static CellInteraction hoveredCell;
+
     private bool hasTurret = false;
     private Renderer cellRenderer;
     private Color originalColor;
@@ -25,30 +27,16 @@ public class CellInteraction : MonoBehaviour
 
     void OnMouseEnter()
     {
-        var selection = TurretSelectionManager.Instance?.selectedTurret;
-        bool canPlace = false;
-
-        if (selection == null || hasTurret || CompareTag("Path") || CompareTag("Core"))
-        {
-            TurretPlacementManager.Instance.HidePreview();
-            return;
-        }
-        if (string.IsNullOrEmpty(selection.turretId))
-        {
-            TurretPlacementManager.Instance.HidePreview();
-            return;
-        }
-        var data = TurretDatabase.Instance?.GetTurretData(selection.turretId);
-        if (data != null && GoldManager.Instance.HasEnoughGold(data.cost))
-        {
-            canPlace = true;
-        }
-        // Muestra el preview en verde si puede, en rojo si no puede
-        TurretPlacementManager.Instance.ShowPreview(transform.position + Vector3.up * 0.5f, selection, canPlace);
+        hoveredCell = this;
+        RefreshPreview();
     }
+
 
     void OnMouseExit()
     {
+        if (hoveredCell == this)
+            hoveredCell = null;
+
         TurretPlacementManager.Instance.HidePreview();
     }
 
@@ -93,6 +81,30 @@ public class CellInteraction : MonoBehaviour
 
         lastClickTime = Time.unscaledTime;
     }
+
+    public void RefreshPreview()
+    {
+        var selection = TurretSelectionManager.Instance?.selectedTurret;
+        bool canPlace = false;
+
+        if (selection == null || hasTurret || CompareTag("Path") || CompareTag("Core"))
+        {
+            TurretPlacementManager.Instance.HidePreview();
+            return;
+        }
+        if (string.IsNullOrEmpty(selection.turretId))
+        {
+            TurretPlacementManager.Instance.HidePreview();
+            return;
+        }
+        var data = TurretDatabase.Instance?.GetTurretData(selection.turretId);
+        if (data != null && GoldManager.Instance.HasEnoughGold(data.cost))
+        {
+            canPlace = true;
+        }
+        TurretPlacementManager.Instance.ShowPreview(transform.position + Vector3.up * 0.5f, selection, canPlace);
+    }
+
 
     bool CanPlaceTurret()
     {

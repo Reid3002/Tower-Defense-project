@@ -85,6 +85,9 @@ public class WaveManager : MonoBehaviour
             return;
 
         waveStarted = true;
+        if (CellInteraction.hoveredCell != null)
+            CellInteraction.hoveredCell.RefreshPreview();
+
         currentWave++;
 
         waveStartWorld = WorldManager.Instance.CurrentWorld;
@@ -152,6 +155,8 @@ public class WaveManager : MonoBehaviour
 
             // Evento de fin de oleada
             OnWaveEnded?.Invoke();
+            if (CellInteraction.hoveredCell != null)
+                CellInteraction.hoveredCell.RefreshPreview();
         }
     }
     public int GetCurrentWave() => currentWave;
