@@ -23,6 +23,7 @@ public class TurretSelectionManager : MonoBehaviour
         // Buscá el objeto TurretSelection por id
         if (turretId == "basic") selectedTurret = basicTurret;
         else if (turretId == "basic_otherworld") selectedTurret = OtherWorldTurret;
+        else if (turretId == "gold_generator") selectedTurret = goldTurret;
         // ... etc para las otras
         Debug.Log($"Seleccionaste torreta id={turretId}");
     }

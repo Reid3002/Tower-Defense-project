@@ -63,7 +63,7 @@ public class TurretPlacementManager : MonoBehaviour
         // El preview solo puede ser verde si ambas condiciones se cumplen
         bool finalCanPlace = canPlace && hasGold;
 
-        Debug.Log($"ShowPreview: canPlace={canPlace}, oro={GoldManager.Instance.currentGold}");
+        //Debug.Log($"ShowPreview: canPlace={canPlace}, oro={GoldManager.Instance.currentGold}");
 
         if (selection == null || selection.turretPrefab == null)
             return;

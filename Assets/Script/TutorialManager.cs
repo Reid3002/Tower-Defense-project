@@ -25,6 +25,14 @@ public class TutorialManager : MonoBehaviour
         UpdateTutorial();
         continueButton.onClick.AddListener(OnContinueClicked);
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            PlayerPrefs.SetInt("HasPlayedBefore", 0);
+            Debug.Log("Se reseteó el flag del tutorial con la tecla T.");
+        }
+    }
 
     void OnContinueClicked()
     {

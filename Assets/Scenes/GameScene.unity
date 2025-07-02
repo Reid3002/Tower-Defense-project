@@ -2716,14 +2716,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1790377625}
         m_TargetAssemblyTypeName: TurretSelectionManager, Assembly-CSharp
-        m_MethodName: SelectGoldTurret
-        m_Mode: 1
+        m_MethodName: SelectTurretById
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: gold_generator
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &434967330
@@ -5088,8 +5088,8 @@ MonoBehaviour:
   tutorialPanel: {fileID: 575670474}
   tutorialImage: {fileID: 1431164909}
   tutorialSprites:
-  - {fileID: 21300000, guid: 5c36eae3724a25445958dd4fd6763766, type: 3}
-  - {fileID: 21300000, guid: 7476c696e2437d14eae1ed74fcde09fb, type: 3}
+  - {fileID: 21300000, guid: 6d6b71fb56d80c74a93e7af6f37cd365, type: 3}
+  - {fileID: 21300000, guid: 6f9acc94bb7fe2c4cbb1e693f913a30b, type: 3}
   continueButton: {fileID: 994836395}
   continueButtonText: {fileID: 923068335}
 --- !u!1 &946094066
@@ -7495,7 +7495,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5c36eae3724a25445958dd4fd6763766, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d6b71fb56d80c74a93e7af6f37cd365, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
