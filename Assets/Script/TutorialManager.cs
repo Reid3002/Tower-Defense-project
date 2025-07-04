@@ -48,6 +48,17 @@ public class TutorialManager : MonoBehaviour
             // Aquí podrías iniciar el juego, desactivar bloqueo, etc.
         }
     }
+    public void ShowTutorial()
+    {
+        if (tutorialPanel.activeSelf) return; 
+        currentIndex = 0;
+        tutorialPanel.SetActive(true);
+
+        continueButton.onClick.RemoveAllListeners();
+        continueButton.onClick.AddListener(OnContinueClicked);
+
+        UpdateTutorial();
+    }
 
     void UpdateTutorial()
     {
